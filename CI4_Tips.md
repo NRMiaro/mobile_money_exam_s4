@@ -340,22 +340,22 @@ class UserModel extends Model
 {
     // ========== CONFIGURATION ==========
     
-    protected string $table = 'users';           // Table BD associée
-    protected string $primaryKey = 'id';          // Clé primaire
-    protected bool $useTimestamps = true;         // Auto created_at/updated_at
-    protected string $createdField = 'created_at';
-    protected string $updatedField = 'updated_at';
-    protected string $dateFormat = 'datetime';    // Format timestamps
+    protected $table = 'users';           // Table BD associée
+    protected $primaryKey = 'id';          // Clé primaire
+    protected $useTimestamps = true;         // Auto created_at/updated_at
+    protected $createdField = 'created_at';
+    protected $updatedField = 'updated_at';
+    protected $dateFormat = 'datetime';    // Format timestamps
 
     // ========== MASS ASSIGNMENT ==========
     
     // Colonnes autorisées pour insert/update (sécurité)
-    protected array $allowedFields = ['name', 'email', 'password', 'role'];
+    protected $allowedFields = ['name', 'email', 'password', 'role'];
 
     // ========== CASTING AUTOMATIQUE ==========
     
     // Cast automatiquement colonnes à certains types
-    protected array $casts = [
+    protected $casts = [
         'id' => 'int',
         'email' => 'string',
         'is_active' => 'boolean',
@@ -365,14 +365,14 @@ class UserModel extends Model
 
     // ========== VALIDATION ==========
     
-    protected array $validationRules = [
+    protected $validationRules = [
         'name' => 'required|min_length[3]|max_length[255]|alpha_space',
         'email' => 'required|valid_email|is_unique[users.email]',
         'password' => 'required|min_length[8]',
         'role' => 'required|in_list[admin,user,moderator]',
     ];
 
-    protected array $validationMessages = [
+    protected $validationMessages = [
         'email' => [
             'is_unique' => 'Cette adresse email est déjà utilisée.',
             'valid_email' => 'Veuillez entrer une adresse email valide.',
@@ -382,9 +382,9 @@ class UserModel extends Model
     // ========== CALLBACKS ==========
     
     // Callback = fonction exécutée avant/après insert/update/delete
-    protected array $beforeInsert = ['hashPassword'];
-    protected array $afterFind = ['unhashPassword'];
-    protected array $afterUpdate = ['logUpdate'];
+    protected $beforeInsert = ['hashPassword'];
+    protected $afterFind = ['unhashPassword'];
+    protected $afterUpdate = ['logUpdate'];
 
     /**
      * Hash le password avant insertion
