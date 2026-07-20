@@ -1,10 +1,14 @@
-<h2>Mon solde</h2>
+<?= $this->extend('client/layout') ?>
+<?= $this->section('content') ?>
+<div class="balance-card">
 
-<p>
-    Bonjour <?= esc($utilisateur['prenom']) ?>
-    <?= esc($utilisateur['nom']) ?>
-</p>
+    <div class="balance-label">
+        Solde disponible
+    </div>
 
-<h3>
-    Solde : <?= number_format($utilisateur['solde'], 0, ',', ' ') ?> Ar
-</h3>
+    <div class="balance-value">
+        <?= number_format($utilisateur['solde'],0,',',' ') ?> Ar
+    </div>
+
+</div>
+<?= $this->endSection() ?>

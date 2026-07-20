@@ -22,6 +22,9 @@ $routes->group('/client', ['filter' => ['auth']], function ($routes) {
     $routes->get('retrait', 'ClientController::retrait');
     $routes->post('retrait', 'ClientController::effectuerRetrait');
 
+    $routes->get('transfert', 'ClientController::transfert');
+    $routes->post('transfert', 'ClientController::effectuerTransfert');
+
     $routes->get('retrait', 'Home::clientRetrait');
     $routes->get('transfert', 'Home::clientTransfert');
     $routes->get('historique', 'ClientController::historique');
