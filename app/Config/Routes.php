@@ -3,9 +3,10 @@
 use CodeIgniter\Router\RouteCollection;
 
 /** @var RouteCollection $routes */
-$routes->get('/', 'Home::index');
+$routes->get('/', 'Home::index', ['filter' => 'auth']);
 $routes->get('login', 'Home::login');
 $routes->post('login', 'AuthController::login');
+$routes->get('logout', 'AuthController::logout');
 
 // Client
 $routes->group('/client', ['filter' => 'auth'], function($routes) {

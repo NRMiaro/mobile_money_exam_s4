@@ -30,9 +30,11 @@ class AuthController extends BaseController {
         session()->set('isAdmin', $user['is_admin']);
         session()->set('idUtilisateur', $user['id']);
 
-        echo "<pre>";
-        print_r(session()->get('isLoggedIn'));
-        echo "</pre>";
+        return redirect()->to('/');
     }
 
+    public function logout(){
+        $this->authService->logout();
+        return redirect()->to('/');
+    }
 }

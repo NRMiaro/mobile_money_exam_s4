@@ -25,4 +25,8 @@ class AuthService
 
         return $user;
     }
+
+    public function logout(){
+        session()->destroy();
+    }
 }
