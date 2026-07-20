@@ -2,12 +2,8 @@
 <?= $this->section('content') ?>
 
 <?php
-// Données en dur pour l'intégration - à remplacer par $data venant du controller
-$activePage = 'dashboard';
-$pageTitle  = 'Dashboard';
-$pageDesc   = 'Bienvenue, gérez vos opérations mobile money';
-$solde      = 125400;
-$numero     = '033 12 345 67';
+$labels = ['depot' => 'Dépôt', 'retrait' => 'Retrait', 'transfert' => 'Transfert'];
+
 ?>
 
 <div class="row g-4 mb-4">
@@ -15,8 +11,8 @@ $numero     = '033 12 345 67';
         <div class="balance-ticket h-100">
             <div class="bt-chip"></div>
             <div class="bt-label">Solde disponible</div>
-            <div class="bt-amount"><?= number_format($solde, 0, ',', ' ') ?> Ar</div>
-            <div class="bt-numero"><?= esc($numero) ?></div>
+            <div class="bt-amount"><?= number_format($utilisateur['solde'], 0, ',', ' ') ?> Ar</div>
+            <div class="bt-numero"><?= esc($utilisateur['numero']) ?></div>
         </div>
     </div>
 
@@ -55,39 +51,33 @@ $numero     = '033 12 345 67';
 
 <div class="mm-table-card">
     <div class="card-head">
-        <h2>Dernières transactions</h2>
-        <a href="<?= base_url('client/historique') ?>" class="small fw-semibold" style="color: var(--mm-primary)">Voir tout &rarr;</a>
+        <h2>Dérnières transactions</h2>
     </div>
-    <table class="table mm-table">
-        <thead>
-        <tr>
-            <th>Date</th>
-            <th>Type</th>
-            <th>Montant</th>
-            <th>Frais</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>19/07/2026 14:32</td>
-            <td><span class="badge-op depot">Dépôt</span></td>
-            <td class="fw-semibold">+50 000 Ar</td>
-            <td>0 Ar</td>
-        </tr>
-        <tr>
-            <td>18/07/2026 09:10</td>
-            <td><span class="badge-op transfert">Transfert</span></td>
-            <td class="fw-semibold">-15 000 Ar</td>
-            <td>300 Ar</td>
-        </tr>
-        <tr>
-            <td>16/07/2026 18:45</td>
-            <td><span class="badge-op retrait">Retrait</span></td>
-            <td class="fw-semibold">-20 000 Ar</td>
-            <td>500 Ar</td>
-        </tr>
-        </tbody>
-    </table>
+
+    <?php if (empty($transactions)): ?>
+        <div class="p-4 text-center text-muted small">Aucune transaction pour le moment.</div>
+    <?php else: ?>
+        <table class="table mm-table">
+            <thead>
+            <tr>
+                <th>Date</th>
+                <th>Type</th>
+                <th>Montant</th>
+                <th>Frais</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($transactions as $t): ?>
+                <tr>
+                    <td><?= esc($t['date']) ?></td>
+                    <td><span class="badge-op <?= $t['type'] ?>"><?= $labels[$t['type']] ?></span></td>
+                    <td class="fw-semibold"><?= $t['sens'] ?><?= number_format($t['montant'], 0, ',', ' ') ?> Ar</td>
+                    <td><?= number_format($t['frais'], 0, ',', ' ') ?> Ar</td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    <?php endif; ?>
 </div>
 
 <?= $this->endSection() ?>

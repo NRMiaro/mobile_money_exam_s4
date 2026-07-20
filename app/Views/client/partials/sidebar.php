@@ -30,10 +30,10 @@ $numero = session()->get('numero') ?? '';
             Tableau de bord
         </a>
 
-        <a href="<?= base_url('client/solde') ?>"
+        <!-- <a href="<?= base_url('client/solde') ?>"
             class="nav-link <?= $activePage=='solde'?'active':'' ?>">
             Mon solde
-        </a>
+        </a> -->
 
         <a href="<?= base_url('client/depot') ?>"
             class="nav-link <?= $activePage=='depot'?'active':'' ?>">
@@ -59,7 +59,7 @@ $numero = session()->get('numero') ?? '';
 
     <div class="sidebar-logout">
         <a href="<?= base_url('logout') ?>">
-            🚪 Déconnexion
+             Déconnexion
         </a>
     </div>
 

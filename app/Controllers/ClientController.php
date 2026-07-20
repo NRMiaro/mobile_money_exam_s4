@@ -4,12 +4,21 @@ namespace App\Controllers;
 
 use App\Models\TypeTransactionModel;
 use App\Models\UtilisateurModel;
+use App\Services\TransactionService;
 
 class ClientController extends BaseController
 {
-    public function index()
-    {
-        return view('client/index');
+    
+    public function dashboard(){
+        $id = session()->get('idUtilisateur');
+        $utilisateurModel = new UtilisateurModel();
+        $transactionService = new TransactionService();
+        $utilisateur = $utilisateurModel->find($id);
+        $data=[
+            'utilisateur' => $utilisateur,
+            'transactions' => $transactionService->getRecentHistoriqueClient($id)
+        ];
+        return view('client/dashboard',$data);
     }
 
     public function solde()
@@ -74,6 +83,18 @@ class ClientController extends BaseController
             ->with('success', 'Dépôt effectué avec succès.');
     }
 
+    public function historique(): string
+{
+    $clientId = session()->get('idUtilisateur');
+
+    $transactionService = new \App\Services\TransactionService();
+
+
+
+    return view('client/historique', [
+        'transactions' => $transactionService->getHistoriqueClient($clientId),
+    ]);
+}
     public function retrait()
     {
         return view('client/retrait');
@@ -204,4 +225,6 @@ class ClientController extends BaseController
             ->to('/client/solde')
             ->with('success', 'Transfert effectué avec succès.');
     }
+
+
 }
