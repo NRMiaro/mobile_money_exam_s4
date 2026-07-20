@@ -5,20 +5,22 @@ namespace App\Controllers;
 use App\Models\TypeTransactionModel;
 use App\Models\UtilisateurModel;
 use App\Services\TransactionService;
+use App\Services\BaremeService;
 
 class ClientController extends BaseController
 {
-    
-    public function dashboard(){
+
+    public function dashboard()
+    {
         $id = session()->get('idUtilisateur');
         $utilisateurModel = new UtilisateurModel();
         $transactionService = new TransactionService();
         $utilisateur = $utilisateurModel->find($id);
-        $data=[
+        $data = [
             'utilisateur' => $utilisateur,
             'transactions' => $transactionService->getRecentHistoriqueClient($id)
         ];
-        return view('client/dashboard',$data);
+        return view('client/dashboard', $data);
     }
 
     public function solde()
@@ -36,7 +38,9 @@ class ClientController extends BaseController
 
     public function depot()
     {
-        return view('client/depot');
+        return view('client/depot', [
+            'baremes' => (new BaremeService())->getBaremesDepot()
+        ]);
     }
 
     public function effectuerDepot()
@@ -84,20 +88,22 @@ class ClientController extends BaseController
     }
 
     public function historique(): string
-{
-    $clientId = session()->get('idUtilisateur');
+    {
+        $clientId = session()->get('idUtilisateur');
 
-    $transactionService = new \App\Services\TransactionService();
+        $transactionService = new \App\Services\TransactionService();
 
 
 
-    return view('client/historique', [
-        'transactions' => $transactionService->getHistoriqueClient($clientId),
-    ]);
-}
+        return view('client/historique', [
+            'transactions' => $transactionService->getHistoriqueClient($clientId),
+        ]);
+    }
     public function retrait()
     {
-        return view('client/retrait');
+        return view('client/retrait', [
+            'baremes' => (new BaremeService())->getBaremesRetrait()
+        ]);
     }
 
     public function effectuerRetrait()
@@ -146,7 +152,9 @@ class ClientController extends BaseController
 
     public function transfert()
     {
-        return view('client/transfert');
+        return view('client/transfert', [
+            'baremes' => (new BaremeService())->getBaremesTransfert()
+        ]);
     }
 
     public function effectuerTransfert()
@@ -225,6 +233,4 @@ class ClientController extends BaseController
             ->to('/client/solde')
             ->with('success', 'Transfert effectué avec succès.');
     }
-
-
 }
