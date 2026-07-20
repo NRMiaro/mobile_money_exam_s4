@@ -1,7 +1,8 @@
--- Active: 1784550825520@@127.0.0.1@3306
+-- Active: 1784552473363@@127.0.0.1@3306
 PRAGMA foreign_keys = OFF;
 
 DROP TABLE IF EXISTS transactions;
+DROP TABLE IF EXISTS commission;
 DROP TABLE IF EXISTS bareme;
 DROP TABLE IF EXISTS type_transaction;
 DROP TABLE IF EXISTS prefixe;
@@ -13,7 +14,7 @@ PRAGMA foreign_keys = ON;
 CREATE TABLE operateur (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     libelle TEXT NOT NULL UNIQUE
-)
+);
 
 CREATE TABLE utilisateur (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -34,7 +35,7 @@ CREATE TABLE prefixe (
     id_operateur INTEGER NOT NULL,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
 
-    Foreign Key (id_operateur) REFERENCES operateur(id)
+    FOREIGN KEY (id_operateur) REFERENCES operateur(id)
 );
 
 CREATE TABLE type_transaction (
@@ -53,13 +54,24 @@ CREATE TABLE bareme (
         REFERENCES type_transaction(id)
 );
 
+CREATE TABLE commission (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_operateur INTEGER NOT NULL,
+    pct_commission REAL NOT NULL CHECK(pct_commission >= 0 AND pct_commission <= 100),
+
+    FOREIGN KEY(id_operateur)
+        REFERENCES operateur(id)
+);
+
 CREATE TABLE transactions (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     id_type_transaction INTEGER NOT NULL,
     id_client_source INTEGER,
     id_client_destinataire INTEGER,
+    id_operateur_destinataire INTEGER,              
     montant REAL NOT NULL CHECK(montant > 0),
     frais REAL NOT NULL CHECK(frais >= 0),
+    montant_commission REAL NOT NULL DEFAULT 0,      
     date_transaction DATETIME DEFAULT CURRENT_TIMESTAMP,
 
     FOREIGN KEY(id_type_transaction)
@@ -69,10 +81,14 @@ CREATE TABLE transactions (
         REFERENCES utilisateur(id),
 
     FOREIGN KEY(id_client_destinataire)
-        REFERENCES utilisateur(id)
+        REFERENCES utilisateur(id),
+
+    FOREIGN KEY(id_operateur_destinataire)
+        REFERENCES operateur(id)
 );
+
 INSERT INTO operateur
-VALUES 
+VALUES
     (1, 'Yas'),
     (2, 'Orange'),
     (3, 'Airtel');
@@ -127,7 +143,8 @@ VALUES
     (3, 20000, 49999, 600),
     (3, 50000, 99999, 1000);
 
-
-
---- depart V2
--- Table operateurs
+-- Commissions 
+INSERT INTO commission (id_operateur, pct_commission)
+VALUES
+    (2, 1.5),   -- Orange
+    (3, 2.0);   -- Airtel
