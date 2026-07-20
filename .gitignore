@@ -1,0 +1,49 @@
+# =========================
+# CodeIgniter 4
+# =========================
+
+# Logs
+writable/logs/*
+
+# Cache
+writable/cache/*
+writable/session/*
+writable/uploads/*
+
+# SQLite
+writable/database/*.db
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Composer
+/vendor/# =========================
+# CodeIgniter 4
+# =========================
+
+# Logs
+writable/logs/*
+
+# Cache
+writable/cache/*
+writable/session/*
+writable/uploads/*
+
+# SQLite
+writable/database/*.db
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Composer
+/vendor/

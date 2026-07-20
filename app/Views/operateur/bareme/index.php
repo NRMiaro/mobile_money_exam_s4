@@ -6,10 +6,6 @@ $activePage = 'baremes';
 $pageTitle  = 'Barèmes';
 $pageDesc   = 'Frais par tranche de montant, par type d\'opération';
 
-// Données en dur pour l'intégration - à remplacer par 3 requêtes
-// (v_bareme_depot, v_bareme_retrait, v_bareme_transaction) depuis le controller
-
-
 function renderBaremeRows(array $baremes): void
 {
     if (empty($baremes)) {

@@ -13,12 +13,15 @@ class PrefixeController extends BaseController
         $this->service = new PrefixeService();
     }
 
-    public function index(): string
-    {
-        return view('operateur/prefixe/index', [
-            'prefixes' => $this->service->getAll(),
-        ]);
-    }
+   public function index(): string
+{
+    $prefixes = $this->service->getAll();
+    // dd($prefixes);
+
+    return view('operateur/prefixe/index', [
+        'prefixes' => $prefixes,
+    ]);
+}
 
     public function create(): string
     {
@@ -41,11 +44,5 @@ class PrefixeController extends BaseController
 
         return redirect()->to('/operateur/prefixes')
             ->with('success', 'Préfixe ajouté avec succès.');
-    }
-
-    
-
-    
-
-    
+    }    
 }

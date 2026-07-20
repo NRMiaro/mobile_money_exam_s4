@@ -9,34 +9,39 @@ $routes->post('login', 'AuthController::login');
 $routes->get('logout', 'AuthController::logout');
 
 // Client
-$routes->group('/client', ['filter' => ['auth']], function($routes) {
-    $routes->get('', 'Home::clientDashboard');
-    $routes->get('dashboard', 'Home::clientDashboard');
-    $routes->get('depot', 'Home::clientDepot');
+$routes->group('/client', ['filter' => ['auth']], function ($routes) {
+    $routes->get('', 'ClientController::solde');
+    $routes->get('solde', 'ClientController::solde');
+    $routes->get('dashboard', 'ClientController::dashboard');
+
+    // DEPOT
+    $routes->get('depot', 'ClientController::depot');
+    $routes->post('depot', 'ClientController::effectuerDepot');
+
+    // TODO: RETRAIT
+    $routes->get('retrait', 'ClientController::retrait');
+    $routes->post('retrait', 'ClientController::effectuerRetrait');
+
+    $routes->get('transfert', 'ClientController::transfert');
+    $routes->post('transfert', 'ClientController::effectuerTransfert');
+
     $routes->get('retrait', 'Home::clientRetrait');
     $routes->get('transfert', 'Home::clientTransfert');
-    $routes->get('historique', 'Home::clientHistorique');
+    $routes->get('historique', 'ClientController::historique');
     $routes->get('compte', 'Home::clientCompte');
 });
 
 // Opérateur
-$routes->group('/operateur', ['filter' => ['admin']], function($routes){
+$routes->group('/operateur', ['filter' => ['admin']], function ($routes) {
 
     $routes->get('', 'OperateurController::dashboard');
     $routes->get('dashboard', 'OperateurController::dashboard');
-<<<<<<< HEAD
-
-    $routes->get('prefixes', 'OperateurController::operateurPrefixesIndex');
-    $routes->get('prefixes/create', 'OperateurController::operateurPrefixesCreate');
-
-=======
     $routes->get('prefixes', 'PrefixeController::index');
     $routes->get('prefixes/create', 'PrefixeController::create');
     $routes->post('prefixes/store', 'PrefixeController::store');
->>>>>>> 5990ae0 (Prefixe done)
     $routes->get('baremes', 'OperateurController::operateurBaremesIndex');
     $routes->get('baremes/create', 'OperateurController::operateurBaremesCreate');
 
     $routes->get('baremes/edit/(:num)', 'OperateurController::operateurBaremesEdit/$1');
-    $routes->post('baremes/update/(:num)','OperateurController::operateurBaremesUpdate/$1');
+    $routes->post('baremes/update/(:num)', 'OperateurController::operateurBaremesUpdate/$1');
 });

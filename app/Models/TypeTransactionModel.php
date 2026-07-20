@@ -6,7 +6,6 @@ use CodeIgniter\Model;
 
 class TypeTransactionModel extends Model
 {
-
     public const DEPOT_ID = 1;
     public const RETRAIT_ID = 2;
     public const TRANSFERT_ID = 3;
