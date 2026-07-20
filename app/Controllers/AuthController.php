@@ -12,6 +12,10 @@ class AuthController extends BaseController {
         $this->authService = new AuthService();
     }
 
+    public function showLogin(){
+        return view('auth/login');
+    }
+
     public function login(){
         $request = $this->request;
         $data = $request->getPost();
@@ -29,8 +33,12 @@ class AuthController extends BaseController {
         session()->set('isLoggedIn', true);
         session()->set('isAdmin', $user['is_admin']);
         session()->set('idUtilisateur', $user['id']);
+        echo session()->get('idUtilisateur');
 
-        return redirect()->to('/');
+        if (session()->get('isAdmin') == 1)
+            return redirect()->to('/operateur');
+        else 
+            return redirect()->to('/client');
     }
 
     public function logout(){
