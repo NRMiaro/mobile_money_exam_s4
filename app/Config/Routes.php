@@ -10,9 +10,22 @@ $routes->get('logout', 'AuthController::logout');
 
 // Client
 $routes->group('/client', ['filter' => ['auth']], function ($routes) {
+<<<<<<< HEAD
+    $routes->get('', 'ClientController::solde');
+    $routes->get('solde', 'ClientController::solde');
+=======
     $routes->get('', 'Home::clientDashboard');
+>>>>>>> origin/dev
     $routes->get('dashboard', 'Home::clientDashboard');
-    $routes->get('depot', 'Home::clientDepot');
+
+    // DEPOT
+    $routes->get('depot', 'ClientController::depot');
+    $routes->post('depot', 'ClientController::effectuerDepot');
+
+    // TODO: RETRAIT
+    $routes->get('retrait', 'ClientController::retrait');
+    $routes->post('retrait', 'ClientController::effectuerRetrait');
+
     $routes->get('retrait', 'Home::clientRetrait');
     $routes->get('transfert', 'Home::clientTransfert');
     $routes->get('historique', 'Home::clientHistorique');
@@ -24,12 +37,9 @@ $routes->group('/operateur', ['filter' => ['admin']], function ($routes) {
 
     $routes->get('', 'OperateurController::dashboard');
     $routes->get('dashboard', 'OperateurController::dashboard');
-
     $routes->get('prefixes', 'PrefixeController::index');
     $routes->get('prefixes/create', 'PrefixeController::create');
     $routes->post('prefixes/store', 'PrefixeController::store');
-
-
     $routes->get('baremes', 'OperateurController::operateurBaremesIndex');
     $routes->get('baremes/create', 'OperateurController::operateurBaremesCreate');
 

@@ -1,2 +1,18 @@
-/writable/debugbar/*.json
-/writable/session/*
+# Logs
+writable/logs/*
+
+# Cache
+writable/cache/*
+writable/session/*
+writable/uploads/*
+
+# SQLite locale
+writable/database/app.db
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

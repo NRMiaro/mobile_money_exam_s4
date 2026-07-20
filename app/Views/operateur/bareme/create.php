@@ -12,6 +12,7 @@ $typesTransaction = [
     ['id' => 2, 'libelle' => 'retrait',   'label' => 'Retrait'],
     ['id' => 3, 'libelle' => 'transfert', 'label' => 'Transfert'],
 ];
+
 ?>
 
 <div class="op-form-card">

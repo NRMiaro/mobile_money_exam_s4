@@ -1,6 +1,8 @@
 <?php 
 namespace App\Services;
 use App\Models\TransactionModel;
+use App\Models\TypeTransactionModel;
+use App\Models\UtilisateurModel;
 
 class TransactionService {
 
@@ -10,5 +12,7 @@ class TransactionService {
         $result = $modelTransaction->selectSum('frais', 'total_gains')->first();
         return (float) ($result['total_gains'] ?? 0);
     }
+
+    
 
 }
