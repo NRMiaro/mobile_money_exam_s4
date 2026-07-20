@@ -7,7 +7,7 @@ $pageTitle  = 'Dépôt';
 $pageDesc   = 'Créditer votre compte mobile money';
 ?>
 
-<div class="op-form-card">
+<!-- <div class="op-form-card">
     <div class="op-form-head head-depot">
         <div class="op-ico">&#8595;</div>
         <div>
@@ -44,6 +44,19 @@ $pageDesc   = 'Créditer votre compte mobile money';
         </form>
 
     </div>
-</div>
+</div> -->
+
+<h2>Dépôt</h2>
+
+<form method="post" action="<?= site_url('client/depot') ?>">
+
+    <label>Montant</label><br>
+    <input type="number" name="montant"><br><br>
+
+    <button type="submit">
+        Déposer
+    </button>
+
+</form>
 
 <?= $this->endSection() ?>
