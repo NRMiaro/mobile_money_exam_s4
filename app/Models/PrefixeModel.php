@@ -19,4 +19,17 @@ class PrefixeModel extends Model
     protected  array $casts = [
         'id' => 'int'
     ];
+
+    protected $validationRules = [
+        'prefixe' => 'required|exact_length[3]|numeric|is_unique[prefixe.prefixe,id,{id}]',
+    ];
+
+    protected $validationMessages = [
+        'prefixe' => [
+            'required'     => 'Le préfixe est obligatoire.',
+            'exact_length' => 'Le préfixe doit contenir exactement 3 chiffres.',
+            'numeric'      => 'Le préfixe ne doit contenir que des chiffres.',
+            'is_unique'    => 'Ce préfixe existe déjà.',
+        ],
+    ];
 }

@@ -12,7 +12,7 @@ $pageDesc   = 'Nouveau préfixe valable pour l\'opérateur';
         <div class="op-ico">&#9741;</div>
         <div>
             <div class="op-title">Nouveau préfixe</div>
-            <div class="op-sub">Ex : 033, 037, 038...</div>
+            <div class="op-sub">Ex : 034, 038...</div>
         </div>
     </div>
 
@@ -28,7 +28,8 @@ $pageDesc   = 'Nouveau préfixe valable pour l\'opérateur';
             <div class="mb-4">
                 <label for="prefixe" class="form-label">Préfixe</label>
                 <input type="text" class="form-control" id="prefixe" name="prefixe"
-                       placeholder="033" maxlength="3" pattern="[0-9]{3}" required>
+                       value="<?= old('prefixe') ?>"
+                       placeholder="034" maxlength="3" pattern="[0-9]{3}" required>
             </div>
 
             <div class="d-flex gap-2">
