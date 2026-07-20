@@ -45,6 +45,8 @@ $routes->group('/operateur', ['filter' => ['admin']], function ($routes) {
     $routes->post('baremes/store', 'OperateurController::store');
     $routes->get('baremes/edit/(:num)', 'OperateurController::operateurBaremesEdit/$1');
     $routes->post('baremes/update/(:num)', 'OperateurController::operateurBaremesUpdate/$1');
-    
+
     $routes->get('comptes', 'OperateurController::operateurComptes');
+
+    $routes->get('commissions', 'OperateurController::situationCommission');
 });

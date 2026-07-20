@@ -15,11 +15,13 @@ class OperateurController extends BaseController
 
     private BaremeService $baremeService;
     private TypeTransactionModel $modelTypeTransaction;
+    private TransactionService $transactionService;
 
     public function __construct()
     {
         $this->baremeService = new BaremeService();
         $this->modelTypeTransaction = new TypeTransactionModel();
+        $this->transactionService= new TransactionService();
     }
 
     public function dashboard()
@@ -44,7 +46,8 @@ class OperateurController extends BaseController
         $utilisateurService = new UtilisateurService();
 
         return view('operateur/compte/index', [
-            'comptes' => $utilisateurService->getComptesAbonnes()
+            'comptes' => $utilisateurService->getComptesAbonnes(),
+            'pageTitle' => "Comptes Abonnés"
         ]);
     }   
 
@@ -71,6 +74,7 @@ class OperateurController extends BaseController
             'baremesDepot' => $this->baremeService->getBaremesDepot(),
             'baremesRetrait' => $this->baremeService->getBaremesRetrait(),
             'baremesTransfert' => $this->baremeService->getBaremesTransfert(),
+            'pageTitle' => 'Barèmes'
         ]);
     }
 
@@ -140,4 +144,17 @@ class OperateurController extends BaseController
                 ->with('error', $e->getMessage());
         }
     }
+
+    public function situationCommission()
+{
+    $commissions = $this->transactionService->getSituationCommissionParOperateur();
+
+    $data = [
+        'pageTitle'=>'Situation des commissions',
+        'commissions' => $commissions
+    ];
+
+
+    return view('operateur/situation_commission', $data);
+}
 }

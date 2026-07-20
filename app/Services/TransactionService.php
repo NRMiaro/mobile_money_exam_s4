@@ -117,4 +117,15 @@ class TransactionService
             'gain_autres_operateurs' => (float) $gainAutres,
         ];
     }
+
+    public function getSituationCommissionParOperateur(): array
+    {
+        return $this->model->select('operateur.libelle as operateur, SUM(transactions.montant_commission) as total_commission')
+            ->join('operateur', 'operateur.id = transactions.id_operateur_destinataire')
+            ->where('transactions.id_type_transaction', TypeTransactionModel::TRANSFERT_ID)
+            ->where('transactions.id_operateur_destinataire !=', TransactionModel::OPERATEUR_ID) // exclut Yas
+            ->groupBy('operateur.libelle')
+            ->orderBy('total_commission', 'DESC')
+            ->findAll();
+    }
 }

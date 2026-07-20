@@ -27,8 +27,13 @@ $activePage = $activePage ?? '';
         </a>
         <a href="<?= base_url('operateur/comptes') ?>"
             class="nav-link <?= $activePage === 'comptes' ? 'active' : '' ?>">
-            <span class="nav-ico">&#128179;</span>
+            <span class="nav-ico">&#9679;</span>
             Comptes abonnés
+        </a>
+        <a href="<?= base_url('operateur/commissions') ?>"
+            class="nav-link <?= $activePage === 'commissions' ? 'active' : '' ?>">
+            <span class="nav-ico">&#8644;</span>
+            Situation commission
         </a>
     </nav>
 
