@@ -32,6 +32,8 @@ class AuthController extends BaseController {
         /* UPDATE session */
         session()->set('isLoggedIn', true);
         session()->set('isAdmin', $user['is_admin']);
+        session()->set('numero', $user['numero']);
+        session()->set('nom', $user['nom'] . ' ' . $user['prenom']);
         session()->set('idUtilisateur', $user['id']);
         echo session()->get('idUtilisateur');
 
