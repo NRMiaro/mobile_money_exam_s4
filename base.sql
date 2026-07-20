@@ -1,3 +1,4 @@
+-- Active: 1784547053848@@127.0.0.1@3306
 PRAGMA foreign_keys = OFF;
 
 DROP TABLE IF EXISTS transactions;
