@@ -9,7 +9,7 @@ class PrefixeModel extends Model
     protected $table = 'prefixe';
     protected $primaryKey = 'id';
 
-    protected $useTimestamps = true;
+    protected $useTimestamps = false;
     protected $createdField = 'created_at';
 
     protected $allowedFields = [
