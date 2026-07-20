@@ -33,4 +33,16 @@ class TransactionModel extends Model
         'montant' => 'required|numeric',
         'frais' => 'required|numeric'
     ];
+
+    public function findByClient(int $clientId): array
+    {
+        return $this->select('transactions.*, type_transaction.libelle as type_libelle')
+            ->join('type_transaction', 'type_transaction.id = transactions.id_type_transaction')
+            ->groupStart()
+                ->where('transactions.id_client_source', $clientId)
+                ->orWhere('transactions.id_client_destinataire', $clientId)
+            ->groupEnd()
+            ->orderBy('transactions.date_transaction', 'DESC')
+            ->findAll();
+    }
 }

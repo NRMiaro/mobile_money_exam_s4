@@ -73,4 +73,15 @@ class ClientController extends BaseController
             ->to('/client/solde')
             ->with('success', 'Dépôt effectué avec succès.');
     }
+
+    public function historique(): string
+{
+    $clientId = session()->get('idUtilisateur');
+
+    $transactionService = new \App\Services\TransactionService();
+
+    return view('client/historique', [
+        'transactions' => $transactionService->getHistoriqueClient($clientId),
+    ]);
+}
 }
