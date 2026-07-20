@@ -33,10 +33,16 @@ $routes->group('/operateur', ['filter' => ['admin']], function ($routes) {
 
     $routes->get('', 'OperateurController::dashboard');
     $routes->get('dashboard', 'OperateurController::dashboard');
+<<<<<<< HEAD
 
     $routes->get('prefixes', 'OperateurController::operateurPrefixesIndex');
     $routes->get('prefixes/create', 'OperateurController::operateurPrefixesCreate');
 
+=======
+    $routes->get('prefixes', 'PrefixeController::index');
+    $routes->get('prefixes/create', 'PrefixeController::create');
+    $routes->post('prefixes/store', 'PrefixeController::store');
+>>>>>>> 5990ae0 (Prefixe done)
     $routes->get('baremes', 'OperateurController::operateurBaremesIndex');
     $routes->get('baremes/create', 'OperateurController::operateurBaremesCreate');
 
