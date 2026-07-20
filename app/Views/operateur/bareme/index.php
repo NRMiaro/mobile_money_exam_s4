@@ -8,20 +8,6 @@ $pageDesc   = 'Frais par tranche de montant, par type d\'opération';
 
 // Données en dur pour l'intégration - à remplacer par 3 requêtes
 // (v_bareme_depot, v_bareme_retrait, v_bareme_transaction) depuis le controller
-$baremesDepot = [
-    ['id' => 1, 'montant_min' => 0, 'montant_max' => null, 'frais' => 0],
-];
-
-$baremesRetrait = [
-    ['id' => 2, 'montant_min' => 0,     'montant_max' => 10000, 'frais' => 200],
-    ['id' => 3, 'montant_min' => 10001, 'montant_max' => 50000, 'frais' => 500],
-    ['id' => 4, 'montant_min' => 50001, 'montant_max' => null,  'frais' => 1000],
-];
-
-$baremesTransfert = [
-    ['id' => 5, 'montant_min' => 0,     'montant_max' => 20000, 'frais' => 200],
-    ['id' => 6, 'montant_min' => 20001, 'montant_max' => null,  'frais' => 500],
-];
 
 function renderBaremeRows(array $baremes): void
 {

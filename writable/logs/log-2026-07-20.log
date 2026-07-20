@@ -1123,3 +1123,118 @@ in APPPATH/Controllers/OperateurController.php on line 18.
  5 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
  6 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
  7 SYSTEMPATH/rewrite.php(44): require_once('/home/miaronr/Documents/S4/mr_rojo/mobile_money_exam_s4/public/index.php')
+DEBUG - 2026-07-20 10:43:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 10:43:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 10:44:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-20 10:44:24 --> ErrorException: Type of App\Models\BaremeModel::$casts must be array (as in class CodeIgniter\BaseModel)
+[Method: GET, Route: operateur]
+in APPPATH/Models/BaremeModel.php on line 7.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+DEBUG - 2026-07-20 10:44:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-20 10:44:25 --> ErrorException: Type of App\Models\BaremeModel::$casts must be array (as in class CodeIgniter\BaseModel)
+[Method: GET, Route: operateur]
+in APPPATH/Models/BaremeModel.php on line 7.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+DEBUG - 2026-07-20 10:44:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-20 10:44:25 --> ErrorException: Type of App\Models\BaremeModel::$casts must be array (as in class CodeIgniter\BaseModel)
+[Method: GET, Route: operateur]
+in APPPATH/Models/BaremeModel.php on line 7.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+DEBUG - 2026-07-20 10:44:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-20 10:44:25 --> ErrorException: Type of App\Models\BaremeModel::$casts must be array (as in class CodeIgniter\BaseModel)
+[Method: GET, Route: operateur]
+in APPPATH/Models/BaremeModel.php on line 7.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+DEBUG - 2026-07-20 10:44:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-20 10:44:25 --> ErrorException: Type of App\Models\BaremeModel::$casts must be array (as in class CodeIgniter\BaseModel)
+[Method: GET, Route: operateur]
+in APPPATH/Models/BaremeModel.php on line 7.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+DEBUG - 2026-07-20 10:44:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-20 10:44:25 --> ErrorException: Type of App\Models\BaremeModel::$casts must be array (as in class CodeIgniter\BaseModel)
+[Method: GET, Route: operateur]
+in APPPATH/Models/BaremeModel.php on line 7.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+DEBUG - 2026-07-20 10:44:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 10:44:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 10:44:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 10:45:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 10:45:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 10:45:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 10:45:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 10:45:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 10:45:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 10:45:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 10:45:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-20 10:45:36 --> table prefixe has no column named updated_at
+in SYSTEMPATH/Database/SQLite3/Connection.php on line 163.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(163): SQLite3->exec()
+ 2 SYSTEMPATH/Database/BaseConnection.php(908): CodeIgniter\Database\SQLite3\Connection->execute()
+ 3 SYSTEMPATH/Database/BaseConnection.php(825): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 4 SYSTEMPATH/Database/BaseBuilder.php(2355): CodeIgniter\Database\BaseConnection->query()
+ 5 SYSTEMPATH/Model.php(357): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH/BaseModel.php(899): CodeIgniter\Model->doInsert()
+ 7 SYSTEMPATH/Model.php(670): CodeIgniter\BaseModel->insert()
+ 8 APPPATH/Services/PrefixeService.php(35): CodeIgniter\Model->insert()
+ 9 APPPATH/Controllers/PrefixeController.php(34): App\Services\PrefixeService->create()
+10 SYSTEMPATH/CodeIgniter.php(974): App\Controllers\PrefixeController->store()
+11 SYSTEMPATH/CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController()
+12 SYSTEMPATH/CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest()
+13 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+15 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+16 SYSTEMPATH/rewrite.php(44): require_once('/home/miaronr/Documents/S4/mr_rojo/mobile_money_exam_s4/public/index.php')
+CRITICAL - 2026-07-20 10:45:36 --> CodeIgniter\Database\Exceptions\DatabaseException: table prefixe has no column named updated_at
+[Method: POST, Route: operateur/prefixes/store]
+in SYSTEMPATH/Database/BaseConnection.php on line 863.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(2355): CodeIgniter\Database\BaseConnection->query()
+ 2 SYSTEMPATH/Model.php(357): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH/BaseModel.php(899): CodeIgniter\Model->doInsert()
+ 4 SYSTEMPATH/Model.php(670): CodeIgniter\BaseModel->insert()
+ 5 APPPATH/Services/PrefixeService.php(35): CodeIgniter\Model->insert()
+ 6 APPPATH/Controllers/PrefixeController.php(34): App\Services\PrefixeService->create()
+ 7 SYSTEMPATH/CodeIgniter.php(974): App\Controllers\PrefixeController->store()
+ 8 SYSTEMPATH/CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+13 SYSTEMPATH/rewrite.php(44): require_once('/home/miaronr/Documents/S4/mr_rojo/mobile_money_exam_s4/public/index.php')
+CRITICAL - 2026-07-20 10:45:36 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: table prefixe has no column named updated_at
+in SYSTEMPATH/Database/SQLite3/Connection.php on line 174.
+ 1 SYSTEMPATH/Database/BaseConnection.php(908): CodeIgniter\Database\SQLite3\Connection->execute()
+ 2 SYSTEMPATH/Database/BaseConnection.php(825): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 3 SYSTEMPATH/Database/BaseBuilder.php(2355): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH/Model.php(357): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH/BaseModel.php(899): CodeIgniter\Model->doInsert()
+ 6 SYSTEMPATH/Model.php(670): CodeIgniter\BaseModel->insert()
+ 7 APPPATH/Services/PrefixeService.php(35): CodeIgniter\Model->insert()
+ 8 APPPATH/Controllers/PrefixeController.php(34): App\Services\PrefixeService->create()
+ 9 SYSTEMPATH/CodeIgniter.php(974): App\Controllers\PrefixeController->store()
+10 SYSTEMPATH/CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController()
+11 SYSTEMPATH/CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest()
+12 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+14 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+15 SYSTEMPATH/rewrite.php(44): require_once('/home/miaronr/Documents/S4/mr_rojo/mobile_money_exam_s4/public/index.php')
+CRITICAL - 2026-07-20 10:45:36 --> [Caused by] SQLite3Exception: table prefixe has no column named updated_at
+in SYSTEMPATH/Database/SQLite3/Connection.php on line 163.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(163): SQLite3->exec()
+ 2 SYSTEMPATH/Database/BaseConnection.php(908): CodeIgniter\Database\SQLite3\Connection->execute()
+ 3 SYSTEMPATH/Database/BaseConnection.php(825): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 4 SYSTEMPATH/Database/BaseBuilder.php(2355): CodeIgniter\Database\BaseConnection->query()
+ 5 SYSTEMPATH/Model.php(357): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH/BaseModel.php(899): CodeIgniter\Model->doInsert()
+ 7 SYSTEMPATH/Model.php(670): CodeIgniter\BaseModel->insert()
+ 8 APPPATH/Services/PrefixeService.php(35): CodeIgniter\Model->insert()
+ 9 APPPATH/Controllers/PrefixeController.php(34): App\Services\PrefixeService->create()
+10 SYSTEMPATH/CodeIgniter.php(974): App\Controllers\PrefixeController->store()
+11 SYSTEMPATH/CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController()
+12 SYSTEMPATH/CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest()
+13 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+15 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+16 SYSTEMPATH/rewrite.php(44): require_once('/home/miaronr/Documents/S4/mr_rojo/mobile_money_exam_s4/public/index.php')
+DEBUG - 2026-07-20 10:45:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 10:45:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 10:45:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

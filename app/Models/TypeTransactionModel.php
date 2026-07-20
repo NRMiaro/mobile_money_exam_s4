@@ -6,6 +6,10 @@ use CodeIgniter\Model;
 
 class TypeTransactionModel extends Model
 {
+    public const DEPOT_ID = 1;
+    public const RETRAIT_ID = 2;
+    public const TRANSFERT_ID = 3;
+
     protected $table = 'type_transaction';
     protected $primaryKey = 'id';
 
@@ -13,7 +17,7 @@ class TypeTransactionModel extends Model
         'libelle'
     ];
 
-    protected $casts = [
+    protected array $casts = [
         'id' => 'int'
     ];
 }
