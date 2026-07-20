@@ -14,8 +14,13 @@ $routes->group('/client', ['filter' => ['auth']], function ($routes) {
     $routes->get('solde', 'ClientController::solde');
     $routes->get('dashboard', 'Home::clientDashboard');
 
+    // DEPOT
     $routes->get('depot', 'ClientController::depot');
     $routes->post('depot', 'ClientController::effectuerDepot');
+
+    // TODO: RETRAIT
+    $routes->get('retrait', 'ClientController::retrait');
+    $routes->post('retrait', 'ClientController::effectuerRetrait');
 
     $routes->get('retrait', 'Home::clientRetrait');
     $routes->get('transfert', 'Home::clientTransfert');
