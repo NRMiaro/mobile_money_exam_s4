@@ -2,20 +2,24 @@
 
 namespace App\Controllers;
 
+use App\Models\TypeTransactionModel;
 use App\Models\UtilisateurModel;
 use App\Services\BaremeService;
 use App\Services\PrefixeService;
 use App\Services\TransactionService;
 use App\Services\UtilisateurService;
+use Exception;
 
 class OperateurController extends BaseController
 {
 
     private BaremeService $baremeService;
+    private TypeTransactionModel $modelTypeTransaction;
 
     public function __construct()
     {
         $this->baremeService = new BaremeService();
+        $this->modelTypeTransaction = new TypeTransactionModel();
     }
 
     public function dashboard()
@@ -61,7 +65,13 @@ class OperateurController extends BaseController
 
     public function operateurBaremesCreate(): string
     {
-        return view('operateur/bareme/create');
+        $data = [
+            'typesTransaction' => $this->modelTypeTransaction
+                ->orderBy('id', 'asc')
+                ->findAll(),
+            'baremes' => $this->baremeService->findAllIndexedByTypeTransaction()
+        ];
+        return view('operateur/bareme/create', $data);
     }
 
     public function operateurBaremesEdit($id)
@@ -72,25 +82,51 @@ class OperateurController extends BaseController
         ]);
     }
 
-    public function operateurBaremesUpdate($id)
+    public function store()
     {
-        $result = $this->baremeService->updateBareme(
-            $id,
-            (int)$this->request->getPost('montant_min'),
-            (int)$this->request->getPost('montant_max'),
-            (float)$this->request->getPost('frais')
-        );
+        try {
+            $this->baremeService->createBareme(
+                (int) $this->request->getPost('id_type_transaction'),
+                (int) $this->request->getPost('montant_min'),
+                (int) $this->request->getPost('montant_max'),
+                (float) $this->request->getPost('frais')
+            );
 
-
-        if ($result) {
             return redirect()
                 ->to('/operateur/baremes')
-                ->with('success', 'Barème modifié avec succès');
+                ->with('success', 'Barème ajouté avec succès.');
+        } catch (\Exception $e) {
+
+            return redirect()
+                ->back()
+                ->withInput()
+                ->with('error', $e->getMessage());
         }
+    }
 
-
-        return redirect()
-            ->back()
-            ->with('error', 'Erreur modification');
+    public function operateurBaremesUpdate($id)
+    {
+        try {
+            $result = $this->baremeService->updateBareme(
+                $id,
+                (int) $this->request->getPost('montant_min'),
+                (int) $this->request->getPost('montant_max'),
+                (float) $this->request->getPost('frais')
+            );
+            if ($result) {
+                return redirect()
+                    ->to('/operateur/baremes')
+                    ->with('success', 'Barème modifié avec succès');
+            } else {
+                return redirect()
+                    ->back()
+                    ->with('error', 'Erreur lors de la modification');
+            }
+        } catch (Exception $e) {
+            //throw $th;
+            return redirect()
+                ->back()
+                ->with('error', $e->getMessage());
+        }
     }
 }

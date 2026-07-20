@@ -6,13 +6,6 @@ $activePage = 'baremes';
 $pageTitle  = 'Ajouter un barème';
 $pageDesc   = 'Nouvelle tranche de frais pour un type d\'opération';
 
-// Données en dur pour l'intégration - viendra de $typesTransaction dans le controller
-$typesTransaction = [
-    ['id' => 1, 'libelle' => 'depot',     'label' => 'Dépôt'],
-    ['id' => 2, 'libelle' => 'retrait',   'label' => 'Retrait'],
-    ['id' => 3, 'libelle' => 'transfert', 'label' => 'Transfert'],
-];
-
 ?>
 
 <div class="op-form-card">
@@ -38,9 +31,17 @@ $typesTransaction = [
                 <select class="form-select" id="id_type_transaction" name="id_type_transaction" required>
                     <option value="" selected disabled>-- Choisir un type --</option>
                     <?php foreach ($typesTransaction as $type): ?>
-                        <option value="<?= $type['id'] ?>"><?= esc($type['label']) ?></option>
+                        <option value="<?= $type['id'] ?>"><?= esc(ucfirst($type['libelle'])) ?></option>
                     <?php endforeach; ?>
                 </select>
+                <div id="baremes-container" class="mb-3 d-none">
+                    <label class="form-label">Barèmes existants</label>
+
+                    <div id="baremes-list" class="small"></div>
+
+                    <div id="baremes-message" class="alert alert-warning mt-2">
+                    </div>
+                </div>
             </div>
 
             <div class="row g-3 mb-3">
@@ -48,7 +49,7 @@ $typesTransaction = [
                     <label for="montant_min" class="form-label">Montant min</label>
                     <div class="amount-input-group">
                         <input type="number" class="form-control" id="montant_min" name="montant_min"
-                               placeholder="0" min="0" step="1" required style="font-size:1rem;padding:.55rem 2.6rem .55rem .8rem;">
+                            placeholder="0" min="0" step="1" required style="font-size:1rem;padding:.55rem 2.6rem .55rem .8rem;" readonly>
                         <span class="amount-suffix" style="right:12px;font-size:.82rem;">Ar</span>
                     </div>
                 </div>
@@ -56,10 +57,9 @@ $typesTransaction = [
                     <label for="montant_max" class="form-label">Montant max</label>
                     <div class="amount-input-group">
                         <input type="number" class="form-control" id="montant_max" name="montant_max"
-                               placeholder="Illimité" min="0" step="1" style="font-size:1rem;padding:.55rem 2.6rem .55rem .8rem;">
+                            placeholder="Illimité" min="0" step="1" style="font-size:1rem;padding:.55rem 2.6rem .55rem .8rem;">
                         <span class="amount-suffix" style="right:12px;font-size:.82rem;">Ar</span>
                     </div>
-                    <div class="form-text">Laisser vide pour "illimité"</div>
                 </div>
             </div>
 
@@ -67,7 +67,7 @@ $typesTransaction = [
                 <label for="frais" class="form-label">Frais</label>
                 <div class="amount-input-group">
                     <input type="number" class="form-control" id="frais" name="frais"
-                           placeholder="0" min="0" step="1" required>
+                        placeholder="0" min="0" step="1" required>
                     <span class="amount-suffix">Ar</span>
                 </div>
             </div>
@@ -80,5 +80,79 @@ $typesTransaction = [
 
     </div>
 </div>
+
+<script>
+const baremes = <?= json_encode($baremes) ?>;
+
+const selectType = document.getElementById('id_type_transaction');
+const montantMin = document.getElementById('montant_min');
+const montantMax = document.getElementById('montant_max');
+
+const container = document.getElementById('baremes-container');
+const list = document.getElementById('baremes-list');
+const message = document.getElementById('baremes-message');
+
+
+selectType.addEventListener('change', function() {
+
+    const idType = this.value;
+
+    list.innerHTML = '';
+    message.innerHTML = '';
+
+    if (!baremes[idType]) {
+        container.classList.add('d-none');
+        montantMin.value = '';
+        return;
+    }
+
+
+    const liste = baremes[idType];
+
+    container.classList.remove('d-none');
+
+
+    let dernierMax = 0;
+
+
+    liste.forEach(b => {
+
+        dernierMax = Math.max(
+            dernierMax,
+            parseInt(b.montant_max ?? 0)
+        );
+
+
+        list.innerHTML += `
+            <div class="border rounded p-2 mb-1">
+                ${b.montant_min} Ar -
+                ${b.montant_max ?? 'Illimité'} Ar
+                :
+                Frais de ${b.frais} Ar
+            </div>
+        `;
+    });
+
+
+    const prochainMin = dernierMax + 1;
+
+
+    montantMin.value = prochainMin;
+    montantMin.min = prochainMin;
+    montantMax.value = prochainMin + 1;
+    montantMax.min = prochainMin + 1;
+
+
+    message.innerHTML =
+        `
+        Le nouveau barème doit commencer à partir de 
+        <strong>${prochainMin} Ar</strong>.
+        <br>
+        Veuillez modifier les barèmes existants si vous souhaitez
+        créer une tranche inférieure.
+        `;
+
+});
+</script>
 
 <?= $this->endSection() ?>
