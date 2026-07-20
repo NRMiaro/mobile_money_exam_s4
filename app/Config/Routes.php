@@ -29,6 +29,10 @@ $routes->group('/client', ['filter' => ['auth']], function ($routes) {
     $routes->get('transfert', 'Home::clientTransfert');
     $routes->get('historique', 'ClientController::historique');
     $routes->get('compte', 'Home::clientCompte');
+
+    // TRANSFERT MULTIPLE
+    $routes->get('transfert-multiple', 'ClientController::transfertMultiple');
+    $routes->post('transfert-multiple', 'ClientController::effectuerTransfertMultiple');
 });
 
 // Opérateur
