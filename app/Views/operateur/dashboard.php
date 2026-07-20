@@ -7,9 +7,8 @@ $pageTitle  = 'Dashboard';
 $pageDesc   = 'Vue d\'ensemble de la plateforme';
 
 // Données en dur pour l'intégration
-$gainTotal    = 2450300;
-$nbPrefixes   = 3;
-$nbComptes    = 128;
+
+
 ?>
 
 <div class="row g-3 mb-4">
@@ -17,7 +16,7 @@ $nbComptes    = 128;
         <div class="stat-card">
             <div class="stat-ico">&#8721;</div>
             <div>
-                <div class="stat-value"><?= number_format($gainTotal, 0, ',', ' ') ?> Ar</div>
+                <div class="stat-value"><?= number_format($totalGains, 0, ',', ' ') ?> Ar</div>
                 <div class="stat-label">Gain total (frais)</div>
             </div>
         </div>
@@ -26,7 +25,7 @@ $nbComptes    = 128;
         <div class="stat-card">
             <div class="stat-ico">&#9741;</div>
             <div>
-                <div class="stat-value"><?= $nbPrefixes ?></div>
+                <div class="stat-value"><?= $totalPrefixes ?></div>
                 <div class="stat-label">Préfixes configurés</div>
             </div>
         </div>
@@ -35,8 +34,8 @@ $nbComptes    = 128;
         <div class="stat-card">
             <div class="stat-ico">&#9679;</div>
             <div>
-                <div class="stat-value"><?= $nbComptes ?></div>
-                <div class="stat-label">Comptes clients</div>
+                <div class="stat-value"><?= $nombreClientsActifs ?></div>
+                <div class="stat-label">Comptes clients Actifs</div>
             </div>
         </div>
     </div>

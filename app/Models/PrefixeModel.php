@@ -16,7 +16,7 @@ class PrefixeModel extends Model
         'prefixe'
     ];
 
-    protected $casts = [
+    protected  array $casts = [
         'id' => 'int'
     ];
 }
