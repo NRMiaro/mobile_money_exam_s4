@@ -1,34 +1,66 @@
 <?php
-// Page active pour surligner le lien du menu (à passer depuis le controller: $activePage = 'dashboard')
 $activePage = $activePage ?? '';
+
+$nom = session()->get('nom') ?? 'Utilisateur';
+$numero = session()->get('numero') ?? '';
 ?>
-<aside class="mm-sidebar" id="mmSidebar">
+
+<aside class="mm-sidebar">
+
     <div class="sidebar-brand">
-        <div class="logo-mark">ML</div>
+        <div class="logo-mark">💸</div>
         <div>
             <div class="brand-name">MoneyLink</div>
-            <div class="brand-tag">Espace client</div>
+            <div class="brand-tag">Mobile Money</div>
         </div>
     </div>
 
     <div class="sidebar-user">
-        <div class="u-name">Rakoto Jean</div>
-        <div class="u-role">033 12 345 67</div>
+
+        <div>
+            <div class="u-name"><?= esc($nom) ?></div>
+            <div class="u-role"><?= esc($numero) ?></div>
+        </div>
     </div>
 
     <nav class="mm-nav">
-        <a href="<?= base_url('client/dashboard') ?>" class="nav-link <?= $activePage === 'dashboard' ? 'active' : '' ?>">
-            <span class="nav-ico">&#9632;</span> Dashboard
+
+        <a href="<?= base_url('client/dashboard') ?>"
+            class="nav-link <?= $activePage=='dashboard'?'active':'' ?>">
+            Tableau de bord
         </a>
-        <a href="<?= base_url('client/historique') ?>" class="nav-link <?= $activePage === 'historique' ? 'active' : '' ?>">
-            <span class="nav-ico">&#8635;</span> Historique
+
+        <a href="<?= base_url('client/solde') ?>"
+            class="nav-link <?= $activePage=='solde'?'active':'' ?>">
+            Mon solde
         </a>
-        <a href="<?= base_url('client/compte') ?>" class="nav-link <?= $activePage === 'compte' ? 'active' : '' ?>">
-            <span class="nav-ico">&#9679;</span> Mon compte
+
+        <a href="<?= base_url('client/depot') ?>"
+            class="nav-link <?= $activePage=='depot'?'active':'' ?>">
+            Dépôt
         </a>
+
+        <a href="<?= base_url('client/retrait') ?>"
+            class="nav-link <?= $activePage=='retrait'?'active':'' ?>">
+            Retrait
+        </a>
+
+        <a href="<?= base_url('client/transfert') ?>"
+            class="nav-link <?= $activePage=='transfert'?'active':'' ?>">
+            Transfert
+        </a>
+
+        <a href="<?= base_url('client/historique') ?>"
+            class="nav-link <?= $activePage=='historique'?'active':'' ?>">
+            Historique
+        </a>
+
     </nav>
 
     <div class="sidebar-logout">
-        <a href="<?= base_url('logout') ?>">&#10148; Déconnexion</a>
+        <a href="<?= base_url('logout') ?>">
+            🚪 Déconnexion
+        </a>
     </div>
+
 </aside>
