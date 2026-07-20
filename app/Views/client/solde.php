@@ -8,6 +8,7 @@
 
     <div class="balance-value">
         <?= number_format($utilisateur['solde'],0,',',' ') ?> Ar
+        <?= session()->get('idUtilisateur')?> Ar
     </div>
 
 </div>

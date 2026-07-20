@@ -12,7 +12,7 @@ $routes->get('logout', 'AuthController::logout');
 $routes->group('/client', ['filter' => ['auth']], function ($routes) {
     $routes->get('', 'ClientController::solde');
     $routes->get('solde', 'ClientController::solde');
-    $routes->get('dashboard', 'Home::clientDashboard');
+    $routes->get('dashboard', 'ClientController::dashboard');
 
     // DEPOT
     $routes->get('depot', 'ClientController::depot');
