@@ -8,20 +8,7 @@ $pageDesc   = 'Frais par tranche de montant, par type d\'opération';
 
 // Données en dur pour l'intégration - à remplacer par 3 requêtes
 // (v_bareme_depot, v_bareme_retrait, v_bareme_transaction) depuis le controller
-$baremesDepot = [
-    ['id' => 1, 'montant_min' => 0, 'montant_max' => null, 'frais' => 0],
-];
 
-$baremesRetrait = [
-    ['id' => 2, 'montant_min' => 0,     'montant_max' => 10000, 'frais' => 200],
-    ['id' => 3, 'montant_min' => 10001, 'montant_max' => 50000, 'frais' => 500],
-    ['id' => 4, 'montant_min' => 50001, 'montant_max' => null,  'frais' => 1000],
-];
-
-$baremesTransfert = [
-    ['id' => 5, 'montant_min' => 0,     'montant_max' => 20000, 'frais' => 200],
-    ['id' => 6, 'montant_min' => 20001, 'montant_max' => null,  'frais' => 500],
-];
 
 function renderBaremeRows(array $baremes): void
 {
@@ -33,7 +20,6 @@ function renderBaremeRows(array $baremes): void
     <table class="table mm-table">
         <thead>
         <tr>
-            <th>#</th>
             <th>Montant min</th>
             <th>Montant max</th>
             <th>Frais</th>
@@ -43,14 +29,11 @@ function renderBaremeRows(array $baremes): void
         <tbody>
         <?php foreach ($baremes as $b): ?>
             <tr>
-                <td><?= $b['id'] ?></td>
                 <td><?= number_format($b['montant_min'], 0, ',', ' ') ?> Ar</td>
                 <td><?= $b['montant_max'] !== null ? number_format($b['montant_max'], 0, ',', ' ') . ' Ar' : 'Illimité' ?></td>
                 <td class="fw-semibold"><?= number_format($b['frais'], 0, ',', ' ') ?> Ar</td>
                 <td class="text-end">
                     <a href="<?= base_url('operateur/baremes/edit/' . $b['id']) ?>" class="btn btn-sm btn-outline-secondary">Modifier</a>
-                    <a href="<?= base_url('operateur/baremes/delete/' . $b['id']) ?>" class="btn btn-sm btn-outline-danger"
-                       onclick="return confirm('Supprimer ce barème ?')">Supprimer</a>
                 </td>
             </tr>
         <?php endforeach; ?>
