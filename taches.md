@@ -75,17 +75,20 @@
 ---
 
 
-
+****
 
 ## Version 2
-- [ ] Creer une table operateur
-- [ ] Creer Model et Service (meme si y a rien encore dans Service)
+Atao hoe Yas le tompon'le Systeme D'Information ohatra eto 
+--- 
+
+- [x] Creer une table operateur
+- [x] Creer Model et Service (meme si y a rien encore dans Service)
   
-- [ ] Ajouter colonne prefixe[id_operateur]
-- [ ] mettre a jour jeu de donnees (atao ID = 1 ny operateur tompon'le SI, de apetraka fotsiny ny ambiny)
-- [ ] mettre a jour fonction d'obtention de prefixe, pour filtrer si on veut prendre nos propres prefixes, ou celui d'un operateur particulier, ou tout
+- [x] Ajouter colonne prefixe[id_operateur]
+- [x] mettre a jour jeu de donnees (atao ID = 1 YAS, de apetraka fotsiny ny ambiny)
+- [x] mettre a jour fonction d'obtention de prefixe, pour filtrer si on veut prendre nos propres prefixes, ou celui d'un operateur particulier, ou tout
   
-- [ ] Creer table commission: id_bareme, idOperateur, %age commission
+- [ ] Creer table commission: #idOperateur, %age commission
 - [ ] Mettre a jour tout ce qui est CRUD bareme transfert (mila ampiana Commission pour chqaue operateur)
 - [ ] Dans Transaction: 
   - [ ] Ajouter colonne montant commission
