@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\TypeTransactionModel;
 use App\Models\UtilisateurModel;
 use App\Services\BaremeService;
 use App\Services\PrefixeService;
@@ -13,10 +14,12 @@ class OperateurController extends BaseController
 {
 
     private BaremeService $baremeService;
+    private TypeTransactionModel $modelTypeTransaction;
 
     public function __construct()
     {
         $this->baremeService = new BaremeService();
+        $this->modelTypeTransaction = new TypeTransactionModel();
     }
 
     public function dashboard()
@@ -62,7 +65,13 @@ class OperateurController extends BaseController
 
     public function operateurBaremesCreate(): string
     {
-        return view('operateur/bareme/create');
+        $data = [
+            'typesTransaction' => $this->modelTypeTransaction
+                ->orderBy('id', 'asc')
+                ->findAll(),
+            'baremes' => $this->baremeService->findAllIndexedByTypeTransaction()
+        ];
+        return view('operateur/bareme/create', $data);
     }
 
     public function operateurBaremesEdit($id)
@@ -71,6 +80,28 @@ class OperateurController extends BaseController
             'contexte' => $this->baremeService
                 ->getContexteModification($id)
         ]);
+    }
+
+    public function store()
+    {
+        try {
+            $this->baremeService->createBareme(
+                (int) $this->request->getPost('id_type_transaction'),
+                (int) $this->request->getPost('montant_min'),
+                (int) $this->request->getPost('montant_max'),
+                (float) $this->request->getPost('frais')
+            );
+
+            return redirect()
+                ->to('/operateur/baremes')
+                ->with('success', 'Barème ajouté avec succès.');
+        } catch (\Exception $e) {
+
+            return redirect()
+                ->back()
+                ->withInput()
+                ->with('error', $e->getMessage());
+        }
     }
 
     public function operateurBaremesUpdate($id)
@@ -97,10 +128,5 @@ class OperateurController extends BaseController
                 ->back()
                 ->with('error', $e->getMessage());
         }
-
-
-
-
-        
     }
 }

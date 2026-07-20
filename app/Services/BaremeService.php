@@ -15,6 +15,67 @@ class BaremeService
         $this->model = new BaremeModel();
     }
 
+    public function findAllIndexedByTypeTransaction(): array
+    {
+        $baremes = $this->model
+            ->orderBy('id_type_transaction', 'ASC')
+            ->orderBy('montant_min', 'ASC')
+            ->findAll();
+
+        $result = [];
+
+        foreach ($baremes as $bareme) {
+            $result[$bareme['id_type_transaction']][] = $bareme;
+        }
+
+        return $result;
+    }
+
+    public function createBareme(
+        int $idTypeTransaction,
+        int $montantMin,
+        int $montantMax,
+        float $frais
+    ): bool {
+        if ($montantMax <= $montantMin) {
+            throw new \Exception(
+                "Le montant maximum doit être supérieur au montant minimum."
+            );
+        }
+
+        $dernierBareme = $this->model
+            ->where('id_type_transaction', $idTypeTransaction)
+            ->orderBy('montant_max', 'DESC')
+            ->first();
+
+        if (!$dernierBareme) {
+            throw new \Exception(
+                "Aucun barème existant pour ce type de transaction."
+            );
+        }
+
+        $prochainMontantMin = $dernierBareme['montant_max'] + 1;
+
+        if ($montantMin != $prochainMontantMin) {
+            throw new \Exception(
+                "Le montant minimum doit être exactement {$montantMin} Ar."
+            );
+        }
+
+        if ($montantMax <= $montantMin) {
+            throw new \Exception(
+                "Le montant maximum est invalide."
+            );
+        }
+
+        return $this->model->insert([
+            'id_type_transaction' => $idTypeTransaction,
+            'montant_min'         => $montantMin,
+            'montant_max'         => $montantMax,
+            'frais'               => $frais
+        ]) !== false;
+    }
+
     public function getBaremes($idTypetransaction)
     {
         return $this->model

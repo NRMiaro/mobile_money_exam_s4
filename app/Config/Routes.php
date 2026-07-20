@@ -41,6 +41,7 @@ $routes->group('/operateur', ['filter' => ['admin']], function ($routes) {
     $routes->post('prefixes/store', 'PrefixeController::store');
     $routes->get('baremes', 'OperateurController::operateurBaremesIndex');
     $routes->get('baremes/create', 'OperateurController::operateurBaremesCreate');
+    $routes->post('baremes/store', 'OperateurController::store');
 
     $routes->get('baremes/edit/(:num)', 'OperateurController::operateurBaremesEdit/$1');
     $routes->post('baremes/update/(:num)', 'OperateurController::operateurBaremesUpdate/$1');
