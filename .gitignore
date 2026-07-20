@@ -1,3 +1,2 @@
-/writable/debugbar/*
+/writable/debugbar/*.json
 /writable/session/*
-/writable/logs/*
