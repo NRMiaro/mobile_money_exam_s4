@@ -89,11 +89,13 @@ Atao hoe Yas le tompon'le Systeme D'Information ohatra eto
 - [x] mettre a jour fonction d'obtention de prefixe, pour filtrer si on veut prendre nos propres prefixes, ou celui d'un operateur particulier, ou tout
   
 - [ ] Creer table commission: #idOperateur, %age commission
-- [ ] Mettre a jour tout ce qui est CRUD bareme transfert (mila ampiana Commission pour chqaue operateur)
 - [ ] Dans Transaction: 
   - [ ] Ajouter colonne montant commission
   - [ ] ajouter colonne idOperateurDestinataire 
 
-- [ ] Mettre a jour page Situation gain: separer les gains entre l'operateur1 et le reste
+- [ ] Mettre a jour page Situation gain - CaD afficher la somme des gains obtenus depuis des transactions :
+  - [ ] Depot + retrait + transferts Yas2Yas
+  - [ ] Transferts Yas2Autre
 - [ ] Nouvelle page: montants a envoyer a chaque operateur
-  - [ ] lister chaque operateur: determiner le montant de commission a 
+  - [ ] lister chaque operateur
+  - [ ] determiner le montant (total commissions ngamba ty ?) pour chaque operateur
