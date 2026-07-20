@@ -15,8 +15,10 @@ class TransactionModel extends Model
         'id_type_transaction',
         'id_client_source',
         'id_client_destinataire',
+        'id_operateur_destinataire',
         'montant',
-        'frais'
+        'frais',
+        'montant_commission'
     ];
 
     protected array $casts = [
@@ -24,14 +26,17 @@ class TransactionModel extends Model
         'id_type_transaction' => 'int',
         'id_client_source' => '?int',
         'id_client_destinataire' => '?int',
+        'id_operateur_destinataire' => '?int',
         'montant' => 'float',
         'frais' => 'float',
+        'montant_commission' => 'float',
     ];
 
     protected $validationRules = [
         'id_type_transaction' => 'required|integer',
         'montant' => 'required|numeric',
-        'frais' => 'required|numeric'
+        'frais' => 'required|numeric',
+        'montant_commission' => 'permit_empty|numeric',
     ];
 
     public function findHistoriqueByClient(int $clientId): array
@@ -39,25 +44,23 @@ class TransactionModel extends Model
         return $this->select('transactions.*, type_transaction.libelle as type_libelle')
             ->join('type_transaction', 'type_transaction.id = transactions.id_type_transaction')
             ->groupStart()
-                ->where('transactions.id_client_source', $clientId)
-                ->orWhere('transactions.id_client_destinataire', $clientId)
+            ->where('transactions.id_client_source', $clientId)
+            ->orWhere('transactions.id_client_destinataire', $clientId)
             ->groupEnd()
             ->orderBy('transactions.date_transaction', 'DESC')
             ->findAll();
     }
 
     public function findRecentHistoriqueByClient(int $clientId): array
-{
-    return $this->select('transactions.*, type_transaction.libelle as type_libelle')
-        ->join('type_transaction', 'type_transaction.id = transactions.id_type_transaction')
-        ->groupStart()
+    {
+        return $this->select('transactions.*, type_transaction.libelle as type_libelle')
+            ->join('type_transaction', 'type_transaction.id = transactions.id_type_transaction')
+            ->groupStart()
             ->where('transactions.id_client_source', $clientId)
             ->orWhere('transactions.id_client_destinataire', $clientId)
-        ->groupEnd()
-        ->orderBy('transactions.date_transaction', 'DESC')
-        ->limit(10)
-        ->findAll();
-}
-
-    
+            ->groupEnd()
+            ->orderBy('transactions.date_transaction', 'DESC')
+            ->limit(10)
+            ->findAll();
+    }
 }
