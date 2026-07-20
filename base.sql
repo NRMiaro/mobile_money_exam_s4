@@ -1,4 +1,4 @@
--- Active: 1784552473363@@127.0.0.1@3306
+-- Active: 1784550825520@@127.0.0.1@3306
 PRAGMA foreign_keys = OFF;
 
 DROP TABLE IF EXISTS transactions;
@@ -101,7 +101,9 @@ INSERT INTO utilisateur
 VALUES
     ('Admin', 'System', '0340000000', '1990-01-01', '1234', 0, 1),
     ('Rakoto', 'Jean', '0341234567', '1998-05-12', '1111', 250000, 0),
-    ('Rabe', 'Marie', '0387654321', '1999-11-20', '2222', 200000, 0);
+    ('Rabe', 'Marie', '0387654321', '1999-11-20', '2222', 200000, 0),
+    ('Razoky', 'Be', '0323232232', '1999-11-20', '3232', 200000, 0),
+    ('Paul', 'Ine', '0333333333', '1999-11-20', '2222', 200000, 0);
 
 -- Préfixes
 INSERT INTO prefixe (prefixe, id_operateur)

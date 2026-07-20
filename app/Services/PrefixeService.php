@@ -87,4 +87,21 @@ class PrefixeService
     {
         return $this->model->errors() ?? [];
     }
+
+    public function getOperateurByNumero(string $numero): ?int
+    {
+        $numero = trim($numero);
+
+        $prefixe = substr($numero, 0, 3);
+
+        $result = $this->model
+            ->where('prefixe', $prefixe)
+            ->first();
+
+        if (!$result) {
+            return null;
+        }
+
+        return (int) $result['id_operateur'];
+    }
 }

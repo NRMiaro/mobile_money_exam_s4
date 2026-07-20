@@ -93,9 +93,18 @@ Atao hoe Yas le tompon'le Systeme D'Information ohatra eto
   - [x] Ajouter colonne montant commission
   - [x] ajouter colonne idOperateurDestinataire 
 
+- [x] affichage dynamique Frais quand Client veut effectuer une transaction
+
 - [ ] Mettre a jour page Situation gain - CaD afficher la somme des gains obtenus depuis des transactions :
   - [ ] Depot + retrait + transferts Yas2Yas
   - [ ] Transferts Yas2Autre
 - [ ] Nouvelle page: montants a envoyer a chaque operateur
   - [ ] lister chaque operateur
   - [ ] determiner le montant (total commissions ngamba ty ?) pour chaque operateur
+
+- [ ] Client qui veut faire transfert: proposer d'envoyer le frais de retrait du destinataire:
+  - [x] obtenir liste baremesRetraits dans la page transfert
+  - [x] dynamique onChange montant (afficher frais deja fait): checkbox "Inclure des frais de retraits XXXX Ar"
+  - [x] dynamique si Yas2Autre: afficher Commission prelevee
+  - [ ] dynamique: ajouter commission si Yas2Autre 
+  
