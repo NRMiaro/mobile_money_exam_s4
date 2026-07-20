@@ -92,7 +92,7 @@ Atao hoe Yas le tompon'le Systeme D'Information ohatra eto
 - [ ] Dans Transaction: 
   - [ ] Ajouter colonne montant commission
   - [ ] ajouter colonne idOperateurDestinataire 
-
+  
 - [ ] Mettre a jour page Situation gain - CaD afficher la somme des gains obtenus depuis des transactions :
   - [ ] Depot + retrait + transferts Yas2Yas
   - [ ] Transferts Yas2Autre
