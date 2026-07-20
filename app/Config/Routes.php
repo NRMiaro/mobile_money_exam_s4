@@ -29,6 +29,10 @@ $routes->group('/client', ['filter' => ['auth']], function ($routes) {
     $routes->get('transfert', 'Home::clientTransfert');
     $routes->get('historique', 'ClientController::historique');
     $routes->get('compte', 'Home::clientCompte');
+
+    // TRANSFERT MULTIPLE
+    $routes->get('transfert-multiple', 'ClientController::transfertMultiple');
+    $routes->post('transfert-multiple', 'ClientController::effectuerTransfertMultiple');
 });
 
 // Opérateur
@@ -45,6 +49,6 @@ $routes->group('/operateur', ['filter' => ['admin']], function ($routes) {
     $routes->post('baremes/store', 'OperateurController::store');
     $routes->get('baremes/edit/(:num)', 'OperateurController::operateurBaremesEdit/$1');
     $routes->post('baremes/update/(:num)', 'OperateurController::operateurBaremesUpdate/$1');
-    
+
     $routes->get('comptes', 'OperateurController::operateurComptes');
 });

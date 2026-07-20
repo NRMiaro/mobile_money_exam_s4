@@ -450,4 +450,223 @@ class ClientController extends BaseController
                     : 'Transfert effectué avec succès.'
             );
     }
+
+    public function transfertMultiple()
+    {
+        return view('client/transfert_multiple', [
+            'baremes' => (new BaremeService())
+                ->getBaremesTransfert(),
+
+            'commissions' => (new \App\Models\CommissionModel())
+                ->findAll()
+        ]);
+    }
+
+    public function effectuerTransfertMultiple()
+    {
+        $idUtilisateur = session()->get('idUtilisateur');
+        $montantTotal = (float) $this->request->getPost('montant');
+        $numeros = $this->request->getPost('numeros');
+        if (!$numeros || count($numeros) == 0) {
+            return redirect()
+                ->back()
+                ->with('error', 'Aucun destinataire.');
+        }
+
+        $utilisateurModel = new UtilisateurModel();
+        $expediteur = $utilisateurModel->find($idUtilisateur);
+
+        /*
+    |--------------------------------------------------------------------------
+    | Recherche destinataires
+    |--------------------------------------------------------------------------
+    */
+
+        $destinataires = [];
+        foreach ($numeros as $numero) {
+            $numero = str_replace(' ', '', $numero);
+            $client = $utilisateurModel
+                ->where('numero', $numero)
+                ->first();
+            if (!$client) {
+                return redirect()
+                    ->back()
+                    ->with(
+                        'error',
+                        "Le numéro $numero n'existe pas."
+                    );
+            }
+            if ($client['id'] == $idUtilisateur) {
+                return redirect()
+                    ->back()
+                    ->with(
+                        'error',
+                        'Impossible de vous transférer à vous-même.'
+                    );
+            }
+            $destinataires[] = $client;
+        }
+        /*
+    |--------------------------------------------------------------------------
+    | Vérification même opérateur
+    |--------------------------------------------------------------------------
+    */
+        $prefixeService = new \App\Services\PrefixeService();
+        $prefixExp = substr($expediteur['numero'], 0, 3);
+        $prefixDest = substr(
+            $destinataires[0]['numero'],
+            0,
+            3
+        );
+        $operateurExp = null;
+        $operateurDest = null;
+        foreach ($prefixeService->getAll() as $prefix) {
+            if ($prefix['prefixe'] == $prefixExp) {
+                $operateurExp = $prefix['id_operateur'];
+            }
+            if ($prefix['prefixe'] == $prefixDest) {
+                $operateurDest = $prefix['id_operateur'];
+            }
+        }
+
+        if ($operateurExp != $operateurDest) {
+            return redirect()
+                ->back()
+                ->with(
+                    'error',
+                    'Les transferts multiples doivent être vers le même opérateur.'
+                );
+        }
+
+        foreach ($destinataires as $dest) {
+            $op = substr($dest['numero'], 0, 3);
+            foreach ($prefixeService->getAll() as $prefix) {
+                if (
+                    $prefix['prefixe'] == $op
+                    &&
+                    $prefix['id_operateur'] != $operateurExp
+                ) {
+                    return redirect()
+                        ->back()
+                        ->with(
+                            'error',
+                            'Tous les numéros doivent appartenir au même opérateur.'
+                        );
+                }
+            }
+        }
+
+
+
+
+
+        /*
+    |--------------------------------------------------------------------------
+    | Calcul frais
+    |--------------------------------------------------------------------------
+    */
+
+
+        $baremeService = new BaremeService();
+        $fraisTotal = 0;
+        foreach (
+            $baremeService->getBaremesTransfert()
+            as $bareme
+        ) {
+            if (
+                $montantTotal >= $bareme['montant_min']
+                &&
+                $montantTotal <= $bareme['montant_max']
+            ) {
+
+                $fraisTotal = $bareme['frais'];
+                break;
+            }
+        }
+        $nb = count($destinataires);
+        $montantPart = floor($montantTotal / $nb);
+        $fraisPart =
+            $fraisTotal / $nb;
+        $totalDebite =
+            $montantTotal + $fraisTotal;
+        if ($expediteur['solde'] < $totalDebite) {
+            return redirect()
+                ->back()
+                ->with(
+                    'error',
+                    'Solde insuffisant.'
+                );
+        }
+
+
+
+
+        /*
+    |--------------------------------------------------------------------------
+    | Mise à jour comptes
+    |--------------------------------------------------------------------------
+    */
+
+
+        $utilisateurModel->update(
+            $idUtilisateur,
+            [
+                'solde' =>
+                $expediteur['solde'] - $totalDebite
+            ]
+        );
+
+
+
+        $transactionModel =
+            new \App\Models\TransactionModel();
+
+
+
+
+        foreach ($destinataires as $dest) {
+
+
+            $utilisateurModel->update(
+                $dest['id'],
+                [
+                    'solde' =>
+                    $dest['solde'] + $montantPart
+                ]
+            );
+
+
+
+            $transactionModel->insert([
+
+                'id_type_transaction'
+                => TypeTransactionModel::TRANSFERT_ID,
+
+                'id_client_source'
+                => $idUtilisateur,
+
+                'id_client_destinataire'
+                => $dest['id'],
+
+                'montant'
+                => $montantPart,
+
+                'frais'
+                => $fraisPart,
+
+                'date_transaction'
+                => date('Y-m-d H:i:s')
+
+            ]);
+        }
+
+
+
+        return redirect()
+            ->to('/client/solde')
+            ->with(
+                'success',
+                'Transfert multiple effectué avec succès.'
+            );
+    }
 }

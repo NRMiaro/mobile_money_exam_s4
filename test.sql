@@ -1,4 +1,4 @@
--- Active: 1784552473363@@127.0.0.1@3306
+-- Active: 1784550825520@@127.0.0.1@3306
 -- Clients supplémentaires (Orange et Airtel) pour pouvoir tester les transferts externes
 INSERT INTO utilisateur
     (nom, prenom, numero, date_naissance, code_secret, solde, is_admin)
@@ -6,7 +6,7 @@ VALUES
     ('Randria', 'Tiana', '0321112222', '1995-03-14', '3333', 100000, 0), -- Orange
     ('Rasoa', 'Faly', '0371113333', '1997-07-22', '4444', 80000, 0),     -- Orange
     ('Andria', 'Njaka', '0331114444', '1996-09-05', '5555', 120000, 0), -- Airtel
-    ('Rakotoson', 'Voahangy', '0332225555', '1994-12-30', '6666', 90000, 0); -- Airtel
+    ('Rakotoson', 'Voahangy', '034225555', '1994-12-30', '6666', 90000, 0); -- Airtel
 
 -- ============================================
 -- TRANSACTIONS DE TEST
