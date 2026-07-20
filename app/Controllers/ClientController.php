@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 use App\Models\TypeTransactionModel;
 use App\Models\UtilisateurModel;
+use App\Models\CommissionModel;
+use App\Models\PrefixeModel;
 use App\Services\TransactionService;
 use App\Services\BaremeService;
 
@@ -152,34 +154,48 @@ class ClientController extends BaseController
 
     public function transfert()
     {
+        $modelPrefixe = (new PrefixeModel())->select();
+
+        $prefixes = $modelPrefixe
+            ->select('prefixe, id_operateur')
+            ->get()
+            ->getResultArray();
+
+
         return view('client/transfert', [
-            'baremes' => (new BaremeService())->getBaremesTransfert()
+            'baremes' => (new BaremeService())->getBaremesTransfert(),
+            'baremesRetrait' => (new BaremeService())->getBaremesRetrait(),
+            'prefixes' => $prefixes,
+            'commissions' => (new CommissionModel())->findAll(),
+
+            // opérateur connecté
+            'idOperateur' => 1
         ]);
     }
 
     public function effectuerTransfert()
     {
         $idUtilisateur = session()->get('idUtilisateur');
+
         $montant = (float) $this->request->getPost('montant');
+
         $numeroDestinataire = str_replace(
             ' ',
             '',
             $this->request->getPost('numero_destinataire')
         );
 
-        // Recherche du barème
-        $frais = 0;
-        $baremesTransfert = (new \App\Services\BaremeService())->getBaremesTransfert();
+        $payerRetrait = $this->request->getPost('payer_retrait') !== null;
 
-        foreach ($baremesTransfert as $bareme) {
-            if (
-                $bareme['montant_min'] <= $montant &&
-                $bareme['montant_max'] >= $montant
-            ) {
-                $frais = $bareme['frais'];
-                break;
-            }
-        }
+
+        $baremeService = new BaremeService();
+
+
+        /*
+    |--------------------------------------------------------------------------
+    | Recherche des utilisateurs
+    |--------------------------------------------------------------------------
+    */
 
         $utilisateurModel = new UtilisateurModel();
 
@@ -189,11 +205,13 @@ class ClientController extends BaseController
             ->where('numero', $numeroDestinataire)
             ->first();
 
+
         if (!$destinataire) {
             return redirect()
                 ->to(base_url('/client/transfert'))
                 ->with('error', 'Numéro destinataire introuvable.');
         }
+
 
         if ($destinataire['id'] == $idUtilisateur) {
             return redirect()
@@ -201,36 +219,235 @@ class ClientController extends BaseController
                 ->with('error', 'Vous ne pouvez pas vous transférer de l\'argent.');
         }
 
-        if ($utilisateur['solde'] < $montant + $frais) {
+
+
+        /*
+    |--------------------------------------------------------------------------
+    | Détermination des opérateurs
+    |--------------------------------------------------------------------------
+    */
+
+        $prefixeService = new \App\Services\PrefixeService();
+
+
+        // opérateur du client connecté
+        $operateurSource =
+            $prefixeService->getOperateurByNumero(
+                $utilisateur['numero']
+            );
+
+
+        // opérateur du destinataire
+        $operateurDestinataire =
+            $prefixeService->getOperateurByNumero(
+                $numeroDestinataire
+            );
+
+
+        if (!$operateurDestinataire) {
+
+            return redirect()
+                ->to(base_url('/client/transfert'))
+                ->with('error', 'Opérateur du destinataire inconnu.');
+        }
+
+
+
+        /*
+    |--------------------------------------------------------------------------
+    | Frais de transfert
+    |--------------------------------------------------------------------------
+    */
+
+        $frais = 0;
+
+        foreach ($baremeService->getBaremesTransfert() as $bareme) {
+
+            if (
+                $montant >= $bareme['montant_min']
+                &&
+                $montant <= $bareme['montant_max']
+            ) {
+
+                $frais = $bareme['frais'];
+                break;
+            }
+        }
+
+
+
+        /*
+    |--------------------------------------------------------------------------
+    | Frais de retrait du destinataire
+    | Possible uniquement même opérateur
+    |--------------------------------------------------------------------------
+    */
+
+        $fraisRetrait = 0;
+
+
+        if (
+            $payerRetrait
+            &&
+            $operateurSource == $operateurDestinataire
+        ) {
+
+            foreach ($baremeService->getBaremesRetrait() as $bareme) {
+
+                if (
+                    $montant >= $bareme['montant_min']
+                    &&
+                    $montant <= $bareme['montant_max']
+                ) {
+
+                    $fraisRetrait = $bareme['frais'];
+                    break;
+                }
+            }
+        }
+
+
+
+        /*
+    |--------------------------------------------------------------------------
+    | Commission inter-opérateur
+    |--------------------------------------------------------------------------
+    */
+
+        $commission = 0;
+
+
+        if ($operateurSource != $operateurDestinataire) {
+
+            $commissionModel = new \App\Models\CommissionModel();
+
+
+            $commissionOperateur = $commissionModel
+                ->where(
+                    'id_operateur',
+                    $operateurDestinataire
+                )
+                ->first();
+
+
+            if ($commissionOperateur) {
+
+                $commission =
+                    $montant
+                    *
+                    $commissionOperateur['pct_commission']
+                    /
+                    100;
+            }
+        }
+
+
+
+        /*
+    |--------------------------------------------------------------------------
+    | Vérification du solde
+    |--------------------------------------------------------------------------
+    */
+
+        $totalDebite =
+            $montant
+            +
+            $frais
+            +
+            $fraisRetrait
+            +
+            $commission;
+
+
+        if ($utilisateur['solde'] < $totalDebite) {
+
             return redirect()
                 ->to(base_url('/client/transfert'))
                 ->with('error', 'Solde insuffisant.');
         }
 
-        // Débiter l'expéditeur
+
+
+        /*
+    |--------------------------------------------------------------------------
+    | Mise à jour des soldes
+    |--------------------------------------------------------------------------
+    */
+
+        // Débit expéditeur
+
         $utilisateurModel->update($idUtilisateur, [
-            'solde' => $utilisateur['solde'] - $montant - $frais
+
+            'solde' =>
+            $utilisateur['solde']
+                -
+                $totalDebite
         ]);
 
-        // Créditer le destinataire
+
+
+        // Crédit destinataire
+
         $utilisateurModel->update($destinataire['id'], [
-            'solde' => $destinataire['solde'] + $montant
+
+            'solde' =>
+            $destinataire['solde']
+                +
+                $montant
+                +
+                $fraisRetrait
         ]);
 
-        // Enregistrement de la transaction
+
+
+        /*
+    |--------------------------------------------------------------------------
+    | Historique transaction
+    |--------------------------------------------------------------------------
+    */
+
         $transactionModel = new \App\Models\TransactionModel();
 
+
         $transactionModel->insert([
-            'id_type_transaction'    => TypeTransactionModel::TRANSFERT_ID,
-            'id_client_source'       => $idUtilisateur,
-            'id_client_destinataire' => $destinataire['id'],
-            'montant'                => $montant,
-            'frais'                  => $frais,
-            'date_transaction'       => date('Y-m-d H:i:s')
+
+            'id_type_transaction'
+            => TypeTransactionModel::TRANSFERT_ID,
+
+            'id_client_source'
+            => $idUtilisateur,
+
+            'id_client_destinataire'
+            => $destinataire['id'],
+
+            'id_operateur_destinataire'
+            => $operateurDestinataire,
+
+            'montant'
+            => $montant,
+
+            'frais'
+            =>
+            $frais
+                +
+                $fraisRetrait,
+
+            'montant_commission'
+            => $commission,
+
+            'date_transaction'
+            => date('Y-m-d H:i:s')
         ]);
+
+
 
         return redirect()
             ->to('/client/solde')
-            ->with('success', 'Transfert effectué avec succès.');
+            ->with(
+                'success',
+                $fraisRetrait > 0
+                    ? 'Transfert effectué avec prise en charge des frais de retrait.'
+                    : 'Transfert effectué avec succès.'
+            );
     }
 }

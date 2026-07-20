@@ -58,7 +58,7 @@ class TransactionService
             $historique[] = [
                 'date'    => date('d/m/Y H:i', strtotime($row['date_transaction'])),
                 'type'    => $type,
-                'montant' => $row['montant'],
+                'montant' => $row['montant'] + $row['montant_commission'],
                 'frais'   => $row['frais'],
                 'sens'    => $sens,
             ];

@@ -1,15 +1,11 @@
-<?= $this->extend('operateur/layout') ?>
-<?= $this->section('content') ?>
-
 <?php
 $activePage = 'dashboard';
 $pageTitle  = 'Dashboard';
 $pageDesc   = 'Vue d\'ensemble de la plateforme';
-
-// Données en dur pour l'intégration
-
-
 ?>
+<?= $this->extend('operateur/layout') ?>
+<?= $this->section('content') ?>
+
 
 <div class="row g-3 mb-4">
     <div class="col-md-4">
