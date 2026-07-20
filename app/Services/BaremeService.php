@@ -77,7 +77,7 @@ class BaremeService
         // Barème actuel
         $current = $this->model->find($id);
 
-        if ($montantMax <= $montantMin) {
+        if ($montantMax < $montantMin) {
             throw new \Exception(
                 "Le montant maximum doit être supérieur au minimum"
             );
@@ -98,8 +98,6 @@ class BaremeService
             ->orderBy('montant_min', 'ASC')
             ->first();
 
-
-
         /*
         * Mise à jour du voisin précédent
         */
@@ -112,8 +110,6 @@ class BaremeService
             );
         }
 
-
-
         /*
         * Mise à jour du voisin suivant
         */
@@ -125,8 +121,6 @@ class BaremeService
                 ]
             );
         }
-
-
 
         /*
         * Mise à jour de la ligne courante

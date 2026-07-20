@@ -7,6 +7,7 @@ use App\Services\BaremeService;
 use App\Services\PrefixeService;
 use App\Services\TransactionService;
 use App\Services\UtilisateurService;
+use Exception;
 
 class OperateurController extends BaseController
 {
@@ -74,23 +75,32 @@ class OperateurController extends BaseController
 
     public function operateurBaremesUpdate($id)
     {
-        $result = $this->baremeService->updateBareme(
-            $id,
-            (int)$this->request->getPost('montant_min'),
-            (int)$this->request->getPost('montant_max'),
-            (float)$this->request->getPost('frais')
-        );
-
-
-        if ($result) {
+        try {
+            $result = $this->baremeService->updateBareme(
+                $id,
+                (int) $this->request->getPost('montant_min'),
+                (int) $this->request->getPost('montant_max'),
+                (float) $this->request->getPost('frais')
+            );
+            if ($result) {
+                return redirect()
+                    ->to('/operateur/baremes')
+                    ->with('success', 'Barème modifié avec succès');
+            } else {
+                return redirect()
+                    ->back()
+                    ->with('error', 'Erreur lors de la modification');
+            }
+        } catch (Exception $e) {
+            //throw $th;
             return redirect()
-                ->to('/operateur/baremes')
-                ->with('success', 'Barème modifié avec succès');
+                ->back()
+                ->with('error', $e->getMessage());
         }
 
 
-        return redirect()
-            ->back()
-            ->with('error', 'Erreur modification');
+
+
+        
     }
 }
