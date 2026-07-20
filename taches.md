@@ -88,11 +88,11 @@ Atao hoe Yas le tompon'le Systeme D'Information ohatra eto
 - [x] mettre a jour jeu de donnees (atao ID = 1 YAS, de apetraka fotsiny ny ambiny)
 - [x] mettre a jour fonction d'obtention de prefixe, pour filtrer si on veut prendre nos propres prefixes, ou celui d'un operateur particulier, ou tout
   
-- [ ] Creer table commission: #idOperateur, %age commission
-- [ ] Dans Transaction: 
-  - [ ] Ajouter colonne montant commission
-  - [ ] ajouter colonne idOperateurDestinataire 
-  
+- [x] Creer table commission: #idOperateur, %age commission
+- [x] Dans Transaction: 
+  - [x] Ajouter colonne montant commission
+  - [x] ajouter colonne idOperateurDestinataire 
+
 - [ ] Mettre a jour page Situation gain - CaD afficher la somme des gains obtenus depuis des transactions :
   - [ ] Depot + retrait + transferts Yas2Yas
   - [ ] Transferts Yas2Autre
