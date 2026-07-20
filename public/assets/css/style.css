@@ -592,3 +592,76 @@ table.mm-table tbody tr:last-child td{ border-bottom: none; }
   .mm-content{ padding: 20px 16px; }
   .mm-topbar{ padding: 14px 16px; }
 }
+
+
+/* ---------------------------------------------------------
+   SEGMENTED CONTROL — switch entre les types de barème
+--------------------------------------------------------- */
+.bareme-switch{
+  display: inline-flex;
+  background: var(--mm-bg);
+  border: 1px solid var(--mm-border);
+  border-radius: 12px;
+  padding: 4px;
+  gap: 2px;
+}
+
+.bareme-switch .btn-segment{
+  appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--mm-text-muted);
+  font-family: var(--mm-font);
+  font-weight: 700;
+  font-size: .84rem;
+  line-height: 1.2;
+  padding: 9px 18px;
+  border-radius: 9px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  box-shadow: none;
+  transition: background .15s ease, color .15s ease, box-shadow .15s ease;
+}
+
+.bareme-switch .btn-segment:hover{
+  background: rgba(12,75,69,.06);
+  color: var(--mm-text);
+}
+
+.bareme-switch .btn-segment:focus-visible{
+  box-shadow: 0 0 0 .18rem rgba(20,107,98,.25);
+}
+
+.bareme-switch .btn-segment .seg-ico{
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .72rem;
+  background: rgba(0,0,0,.06);
+  color: inherit;
+  flex-shrink: 0;
+}
+
+/* état actif : fond blanc + ombre légère + accent coloré selon le type */
+.bareme-switch .btn-segment.active{
+  background: var(--mm-surface);
+  color: var(--mm-text);
+  box-shadow: 0 2px 6px rgba(12,75,69,.12);
+}
+
+.bareme-switch .btn-segment.active .seg-ico{
+  color: #fff;
+}
+.bareme-switch .btn-segment.active[data-type="depot"] .seg-ico{ background: var(--mm-success); }
+.bareme-switch .btn-segment.active[data-type="retrait"] .seg-ico{ background: var(--mm-danger); }
+.bareme-switch .btn-segment.active[data-type="transfert"] .seg-ico{ background: var(--mm-primary); }
+
+.bareme-switch .btn-segment.active[data-type="depot"]{ color: var(--mm-success); }
+.bareme-switch .btn-segment.active[data-type="retrait"]{ color: var(--mm-danger); }
+.bareme-switch .btn-segment.active[data-type="transfert"]{ color: var(--mm-primary); }

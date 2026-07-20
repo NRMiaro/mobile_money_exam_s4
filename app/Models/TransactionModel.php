@@ -19,7 +19,7 @@ class TransactionModel extends Model
         'frais'
     ];
 
-    protected $casts = [
+    protected array $casts = [
         'id' => 'int',
         'id_type_transaction' => 'int',
         'id_client_source' => 'int',

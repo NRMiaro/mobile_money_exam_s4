@@ -15,7 +15,7 @@ $routes->get('client/historique', 'Home::clientHistorique');
 $routes->get('client/compte', 'Home::clientCompte');
 
 // Opérateur
-$routes->get('operateur/dashboard', 'Home::operateurDashboard');
+$routes->get('operateur/dashboard', 'OperateurController::dashboard');
 $routes->get('operateur/prefixes', 'Home::operateurPrefixesIndex');
 $routes->get('operateur/prefixes/create', 'Home::operateurPrefixesCreate');
 $routes->get('operateur/baremes', 'Home::operateurBaremesIndex');

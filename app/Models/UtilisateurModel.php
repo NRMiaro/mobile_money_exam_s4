@@ -24,7 +24,7 @@ class UtilisateurModel extends Model
         'is_admin'
     ];
 
-    protected $casts = [
+    protected array $casts = [
         'id' => 'int',
         'solde' => 'float',
         'is_actif' => 'boolean',
