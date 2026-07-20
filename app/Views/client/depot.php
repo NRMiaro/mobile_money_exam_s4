@@ -65,12 +65,26 @@ $pageDesc   = 'Créditez instantanément votre compte Mobile Money';
                     Le dépôt est crédité automatiquement sur votre compte.
                 </small>
 
+                <div class="alert alert-info mt-3 mb-4" id="resumeDepot">
+
+                    <div class="d-flex justify-content-between">
+                        <span>Frais</span>
+                        <strong id="frais">0 Ar</strong>
+                    </div>
+
+                    <div class="d-flex justify-content-between mt-2">
+                        <span>Montant crédité</span>
+                        <strong id="montantCredite">0 Ar</strong>
+                    </div>
+
+                </div>
+
             </div>
 
             <div class="d-flex gap-2">
 
                 <a href="<?= base_url('client/dashboard') ?>"
-                   class="btn btn-outline-secondary flex-fill">
+                    class="btn btn-outline-secondary flex-fill">
                     Annuler
                 </a>
 
@@ -89,5 +103,57 @@ $pageDesc   = 'Créditez instantanément votre compte Mobile Money';
     </div>
 
 </div>
+
+<script>
+    const baremes = <?= json_encode($baremes) ?>;
+
+    const inputMontant = document.getElementById('montant');
+
+    const fraisLabel = document.getElementById('frais');
+    const montantCredite = document.getElementById('montantCredite');
+
+    function formatAr(nombre) {
+        return new Intl.NumberFormat('fr-FR').format(nombre) + " Ar";
+    }
+
+    function rechercherBareme(montant) {
+
+        for (const bareme of baremes) {
+
+            if (
+                montant >= bareme.montant_min &&
+                montant <= bareme.montant_max
+            ) {
+                return bareme;
+            }
+
+        }
+
+        return null;
+    }
+
+    function mettreAJourResume() {
+
+        const montant = parseFloat(inputMontant.value) || 0;
+
+        const bareme = rechercherBareme(montant);
+
+        let frais = 0;
+
+        if (bareme) {
+            frais = parseFloat(bareme.frais);
+        }
+
+        fraisLabel.textContent = formatAr(frais);
+
+        montantCredite.textContent =
+            formatAr(Math.max(0, montant - frais));
+
+    }
+
+    inputMontant.addEventListener("input", mettreAJourResume);
+
+    mettreAJourResume();
+</script>
 
 <?= $this->endSection() ?>

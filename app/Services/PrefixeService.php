@@ -13,9 +13,39 @@ class PrefixeService
         $this->model = new PrefixeModel();
     }
 
-    public function getAll(): array
+    public function getAll(bool $onlyOwner = false): array
     {
+        if ($onlyOwner) {
+            $this->model->where('id_operateur', 1);
+        }
         return $this->model->orderBy('prefixe', 'ASC')->findAll();
+    }
+
+    public function getPrefixesParOperateur(): array
+    {
+        $owner = $this->model
+            ->where('id_operateur', 1)
+            ->orderBy('prefixe', 'ASC')
+            ->findAll();
+
+        $others = $this->model
+            ->select('prefixe.*, operateur.libelle AS operateur')
+            ->join('operateur', 'operateur.id = prefixe.id_operateur')
+            ->where('id_operateur !=', 1)
+            ->orderBy('operateur.libelle')
+            ->orderBy('prefixe')
+            ->findAll();
+
+        $grouped = [];
+
+        foreach ($others as $prefixe) {
+            $grouped[$prefixe['operateur']][] = $prefixe;
+        }
+
+        return [
+            'owner'  => $owner,
+            'others' => $grouped
+        ];
     }
 
     public function getById(int $id): ?array
@@ -56,5 +86,22 @@ class PrefixeService
     public function getErrors(): array
     {
         return $this->model->errors() ?? [];
+    }
+
+    public function getOperateurByNumero(string $numero): ?int
+    {
+        $numero = trim($numero);
+
+        $prefixe = substr($numero, 0, 3);
+
+        $result = $this->model
+            ->where('prefixe', $prefixe)
+            ->first();
+
+        if (!$result) {
+            return null;
+        }
+
+        return (int) $result['id_operateur'];
     }
 }

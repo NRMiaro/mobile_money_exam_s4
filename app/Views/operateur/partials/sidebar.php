@@ -25,6 +25,16 @@ $activePage = $activePage ?? '';
         <a href="<?= base_url('operateur/baremes') ?>" class="nav-link <?= $activePage === 'baremes' ? 'active' : '' ?>">
             <span class="nav-ico">&#8801;</span> Barèmes
         </a>
+        <a href="<?= base_url('operateur/comptes') ?>"
+            class="nav-link <?= $activePage === 'comptes' ? 'active' : '' ?>">
+            <span class="nav-ico">&#9679;</span>
+            Comptes abonnés
+        </a>
+        <a href="<?= base_url('operateur/commissions') ?>"
+            class="nav-link <?= $activePage === 'commissions' ? 'active' : '' ?>">
+            <span class="nav-ico">&#8644;</span>
+            Situation commission
+        </a>
     </nav>
 
     <div class="sidebar-logout">

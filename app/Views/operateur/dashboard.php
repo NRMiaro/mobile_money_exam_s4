@@ -1,15 +1,11 @@
-<?= $this->extend('operateur/layout') ?>
-<?= $this->section('content') ?>
-
 <?php
 $activePage = 'dashboard';
 $pageTitle  = 'Dashboard';
 $pageDesc   = 'Vue d\'ensemble de la plateforme';
-
-// Données en dur pour l'intégration
-
-
 ?>
+<?= $this->extend('operateur/layout') ?>
+<?= $this->section('content') ?>
+
 
 <div class="row g-3 mb-4">
     <div class="col-md-4">
@@ -36,6 +32,27 @@ $pageDesc   = 'Vue d\'ensemble de la plateforme';
             <div>
                 <div class="stat-value"><?= $nombreClientsActifs ?></div>
                 <div class="stat-label">Comptes clients Actifs</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row g-3 mb-4">
+    <div class="col-md-6">
+        <div class="stat-card">
+            <div class="stat-ico">&#9793;</div>
+            <div>
+                <div class="stat-value"><?= number_format($gainOperateur, 0, ',', ' ') ?> Ar</div>
+                <div class="stat-label">Gain opérateur (Transactions Internes)</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="stat-card">
+            <div class="stat-ico">&#8644;</div>
+            <div>
+                <div class="stat-value"><?= number_format($gainAutresOperateurs, 0, ',', ' ') ?> Ar</div>
+                <div class="stat-label">Gain avec autres opérateurs (Transactions Externes)</div>
             </div>
         </div>
     </div>

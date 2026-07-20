@@ -58,7 +58,7 @@ class TransactionService
             $historique[] = [
                 'date'    => date('d/m/Y H:i', strtotime($row['date_transaction'])),
                 'type'    => $type,
-                'montant' => $row['montant'],
+                'montant' => $row['montant'] + $row['montant_commission'],
                 'frais'   => $row['frais'],
                 'sens'    => $sens,
             ];
@@ -82,5 +82,50 @@ class TransactionService
         }
 
         return '+';
+    }
+
+    public function getSituationGain()
+    {
+
+        // Gain opérateur (Yas) : DEPOT + RETRAIT + TRANSFERT vers Yas
+        $gainOperateur = $this->model->selectSum('frais')
+            ->groupStart()
+            ->whereIn('id_type_transaction', [TypeTransactionModel::DEPOT_ID, TypeTransactionModel::RETRAIT_ID]) // DEPOT, RETRAIT
+            ->orGroupStart()
+            ->where('id_type_transaction', TypeTransactionModel::TRANSFERT_ID) // TRANSFERT
+            ->groupStart()
+            ->where('id_operateur_destinataire', TransactionModel::OPERATEUR_ID)
+            ->orWhere('id_operateur_destinataire', null)
+            ->groupEnd()
+            ->groupEnd()
+            ->groupEnd()
+            ->get()
+            ->getRow()
+            ->frais ?? 0;
+
+        // Gain autres opérateurs : TRANSFERT vers tout ce qui n'est PAS Yas
+        $gainAutres = $this->model->selectSum('frais')
+            ->where('id_type_transaction', TypeTransactionModel::TRANSFERT_ID) // TRANSFERT
+            ->where('id_operateur_destinataire !=', TransactionModel::OPERATEUR_ID)
+            ->where('id_operateur_destinataire IS NOT NULL')
+            ->get()
+            ->getRow()
+            ->frais ?? 0;
+
+        return [
+            'gain_operateur' => (float) $gainOperateur,
+            'gain_autres_operateurs' => (float) $gainAutres,
+        ];
+    }
+
+    public function getSituationCommissionParOperateur(): array
+    {
+        return $this->model->select('operateur.libelle as operateur, SUM(transactions.montant_commission) as total_commission')
+            ->join('operateur', 'operateur.id = transactions.id_operateur_destinataire')
+            ->where('transactions.id_type_transaction', TypeTransactionModel::TRANSFERT_ID)
+            ->where('transactions.id_operateur_destinataire !=', TransactionModel::OPERATEUR_ID) // exclut Yas
+            ->groupBy('operateur.libelle')
+            ->orderBy('total_commission', 'DESC')
+            ->findAll();
     }
 }

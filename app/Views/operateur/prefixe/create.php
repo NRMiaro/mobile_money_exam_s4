@@ -25,11 +25,39 @@ $pageDesc   = 'Nouveau préfixe valable pour l\'opérateur';
         <form action="<?= base_url('operateur/prefixes/store') ?>" method="post">
             <?= csrf_field() ?>
 
+            <div class="mb-3">
+                <label for="id_operateur" class="form-label">
+                    Opérateur
+                </label>
+
+                <select
+                    class="form-select"
+                    id="id_operateur"
+                    name="id_operateur"
+                    required>
+
+                    <option value="">-- Choisir un opérateur --</option>
+
+                    <?php foreach ($operateurs as $operateur): ?>
+
+                        <option
+                            value="<?= $operateur['id'] ?>"
+                            <?= old('id_operateur') == $operateur['id'] ? 'selected' : '' ?>>
+
+                            <?= esc($operateur['libelle']) ?>
+
+                        </option>
+
+                    <?php endforeach; ?>
+
+                </select>
+            </div>
+
             <div class="mb-4">
                 <label for="prefixe" class="form-label">Préfixe</label>
                 <input type="text" class="form-control" id="prefixe" name="prefixe"
-                       value="<?= old('prefixe') ?>"
-                       placeholder="034" maxlength="3" pattern="[0-9]{3}" required>
+                    value="<?= old('prefixe') ?>"
+                    placeholder="034" maxlength="3" pattern="[0-9]{3}" required>
             </div>
 
             <div class="d-flex gap-2">
