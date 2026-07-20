@@ -54,13 +54,43 @@ class OperateurController extends BaseController
     {
         return view('operateur/bareme/index', [
             'baremesDepot' => $this->baremeService->getBaremesDepot(),
-            'baremesRetrait' => [],
-            'baremesTransfert' => [],
+            'baremesRetrait' => $this->baremeService->getBaremesRetrait(),
+            'baremesTransfert' => $this->baremeService->getBaremesTransfert(),
         ]);
     }
 
     public function operateurBaremesCreate(): string
     {
         return view('operateur/bareme/create');
+    }
+
+    public function operateurBaremesEdit($id)
+    {
+        return view('operateur/bareme/edit', [
+            'contexte' => $this->baremeService
+                ->getContexteModification($id)
+        ]);
+    }
+
+    public function operateurBaremesUpdate($id)
+    {
+        $result = $this->baremeService->updateBareme(
+            $id,
+            (int)$this->request->getPost('montant_min'),
+            (int)$this->request->getPost('montant_max'),
+            (float)$this->request->getPost('frais')
+        );
+
+
+        if ($result) {
+            return redirect()
+                ->to('/operateur/baremes')
+                ->with('success', 'Barème modifié avec succès');
+        }
+
+
+        return redirect()
+            ->back()
+            ->with('error', 'Erreur modification');
     }
 }
