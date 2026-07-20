@@ -8,7 +8,7 @@ $numero = session()->get('numero') ?? '';
 <aside class="mm-sidebar">
 
     <div class="sidebar-brand">
-        <div class="logo-mark">💸</div>
+        <div class="logo-mark">ML</div>
         <div>
             <div class="brand-name">MoneyLink</div>
             <div class="brand-tag">Mobile Money</div>
