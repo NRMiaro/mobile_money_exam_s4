@@ -75,20 +75,20 @@
 ---
 
 
-
+****
 
 ## Version 2
 Atao hoe Yas le tompon'le Systeme D'Information ohatra eto 
 --- 
 
-- [ ] Creer une table operateur
-- [ ] Creer Model et Service (meme si y a rien encore dans Service)
+- [x] Creer une table operateur
+- [x] Creer Model et Service (meme si y a rien encore dans Service)
   
-- [ ] Ajouter colonne prefixe[id_operateur]
-- [ ] mettre a jour jeu de donnees (atao ID = 1 YAS, de apetraka fotsiny id an'ny ambiny)
-- [ ] mettre a jour fonction d'obtention du prefixe de YAS, ou d'un autre operateur demande
+- [x] Ajouter colonne prefixe[id_operateur]
+- [x] mettre a jour jeu de donnees (atao ID = 1 YAS, de apetraka fotsiny ny ambiny)
+- [x] mettre a jour fonction d'obtention de prefixe, pour filtrer si on veut prendre nos propres prefixes, ou celui d'un operateur particulier, ou tout
   
-- [ ] Creer table commission: idOperateur, %age commission
+- [ ] Creer table commission: #idOperateur, %age commission
 - [ ] Dans Transaction: 
   - [ ] Ajouter colonne montant commission
   - [ ] ajouter colonne idOperateurDestinataire 

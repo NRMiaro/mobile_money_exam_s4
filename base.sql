@@ -1,4 +1,4 @@
--- Active: 1784552473363@@127.0.0.1@3306
+-- Active: 1784550825520@@127.0.0.1@3306
 PRAGMA foreign_keys = OFF;
 
 DROP TABLE IF EXISTS transactions;
@@ -6,8 +6,14 @@ DROP TABLE IF EXISTS bareme;
 DROP TABLE IF EXISTS type_transaction;
 DROP TABLE IF EXISTS prefixe;
 DROP TABLE IF EXISTS utilisateur;
+DROP TABLE IF EXISTS operateur;
 
 PRAGMA foreign_keys = ON;
+
+CREATE TABLE operateur (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    libelle TEXT NOT NULL UNIQUE
+)
 
 CREATE TABLE utilisateur (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -25,7 +31,10 @@ CREATE TABLE utilisateur (
 CREATE TABLE prefixe (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     prefixe TEXT NOT NULL UNIQUE,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    id_operateur INTEGER NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+
+    Foreign Key (id_operateur) REFERENCES operateur(id)
 );
 
 CREATE TABLE type_transaction (
@@ -62,6 +71,11 @@ CREATE TABLE transactions (
     FOREIGN KEY(id_client_destinataire)
         REFERENCES utilisateur(id)
 );
+INSERT INTO operateur
+VALUES 
+    (1, 'Yas'),
+    (2, 'Orange'),
+    (3, 'Airtel');
 
 
 -- jeu de donnees tsotsotra 
@@ -74,10 +88,13 @@ VALUES
     ('Rabe', 'Marie', '0387654321', '1999-11-20', '2222', 200000, 0);
 
 -- Préfixes
-INSERT INTO prefixe (prefixe)
+INSERT INTO prefixe (prefixe, id_operateur)
 VALUES
-('034'),
-('038');
+('034', 1),
+('038', 1),
+('032', 2),
+('037', 2),
+('033', 3);
 
 -- Types de transaction
 INSERT INTO type_transaction (id, libelle)
@@ -96,16 +113,21 @@ INSERT INTO bareme
     (id_type_transaction, montant_min, montant_max, frais)
 VALUES
     -- DEPOT (gratuit)
-    (1, 0, 50000, 0),
-    (1, 50000, 500000, 0),
-    (1, 500000, 10000000, 0),
+    (1, 0, 9999, 0),
+    (1, 10000, 49999, 0),
+    (1, 50000, 99999, 0),
     -- RETRAIT
-    (2, 0, 50000, 500),
-    (2, 50000, 100000, 1000),
-    (2, 100000, 500000, 2000),
-    (2, 500000, 10000000, 5000),
+    (2, 0, 9999, 300),
+    (2, 10000, 19999, 500),
+    (2, 20000, 49999, 1000),
+    (2, 50000, 99999, 1500),
     -- TRANSFERT
-    (3, 0, 50000, 300),
-    (3, 50000, 100000, 600),
-    (3, 100000, 500000, 1200),
-    (3, 500000, 10000000, 3000);
+    (3, 0, 9999, 200),
+    (3, 10000, 19999, 400),
+    (3, 20000, 49999, 600),
+    (3, 50000, 99999, 1000);
+
+
+
+--- depart V2
+-- Table operateurs

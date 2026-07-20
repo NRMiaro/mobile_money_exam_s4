@@ -2,37 +2,43 @@
 
 namespace App\Controllers;
 
+use App\Services\OperateurService;
 use App\Services\PrefixeService;
 
 class PrefixeController extends BaseController
 {
     protected PrefixeService $service;
+    protected OperateurService $operateurService;
 
     public function __construct()
     {
         $this->service = new PrefixeService();
+        $this->operateurService = new OperateurService();
     }
 
-   public function index(): string
-{
-    $prefixes = $this->service->getAll();
-    // dd($prefixes);
+    public function index(): string
+    {
+        $data = $this->service->getPrefixesParOperateur();
 
-    return view('operateur/prefixe/index', [
-        'prefixes' => $prefixes,
-    ]);
-}
+        return view('operateur/prefixe/index', $data);
+    }
 
     public function create(): string
     {
-        return view('operateur/prefixe/create');
+        return view('operateur/prefixe/create', [
+            'operateurs' => $this->operateurService->getAll()
+        ]);
     }
 
     public function store()
     {
         $data = [
             'prefixe' => $this->request->getPost('prefixe'),
+            'id_operateur' => (int) $this->request->getPost('id_operateur'),
         ];
+
+        // dd($data);
+        // return; 
 
         $result = $this->service->create($data);
 
@@ -44,5 +50,5 @@ class PrefixeController extends BaseController
 
         return redirect()->to('/operateur/prefixes')
             ->with('success', 'Préfixe ajouté avec succès.');
-    }    
+    }
 }
