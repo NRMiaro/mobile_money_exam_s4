@@ -24,11 +24,11 @@ class UtilisateurModel extends Model
         'is_admin'
     ];
 
-    protected $casts = [
-        'id' => 'int',
-        'solde' => 'float',
-        'is_actif' => 'boolean',
-        'is_admin' => 'boolean',
+    protected array $casts = [
+        'id'        => 'int',
+        'solde'     => 'float',
+        'is_actif'  => 'boolean',
+        'is_admin'  => 'boolean',
     ];
 
     protected $validationRules = [
@@ -51,5 +51,11 @@ class UtilisateurModel extends Model
         // }
 
         return $data;
+    }
+
+    public function findByNumero(string $numero): ?array
+    {
+        return $this->where('numero', $numero)
+            ->first();
     }
 }
