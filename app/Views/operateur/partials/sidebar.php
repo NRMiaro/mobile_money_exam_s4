@@ -25,6 +25,11 @@ $activePage = $activePage ?? '';
         <a href="<?= base_url('operateur/baremes') ?>" class="nav-link <?= $activePage === 'baremes' ? 'active' : '' ?>">
             <span class="nav-ico">&#8801;</span> Barèmes
         </a>
+        <a href="<?= base_url('operateur/comptes') ?>"
+            class="nav-link <?= $activePage === 'comptes' ? 'active' : '' ?>">
+            <span class="nav-ico">&#128179;</span>
+            Comptes abonnés
+        </a>
     </nav>
 
     <div class="sidebar-logout">

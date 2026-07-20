@@ -36,6 +36,14 @@ class OperateurController extends BaseController
         return view("operateur/dashboard", $data);
     }
 
+    public function operateurComptes(): string
+    {
+        $utilisateurService = new UtilisateurService();
+
+        return view('operateur/compte/index', [
+            'comptes' => $utilisateurService->getComptesAbonnes()
+        ]);
+    }   
 
 
     // ---------- OPERATEUR ----------
