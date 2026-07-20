@@ -3,20 +3,27 @@
 use CodeIgniter\Router\RouteCollection;
 
 /** @var RouteCollection $routes */
-$routes->get('/', 'Home::index');
+$routes->get('/', 'Home::index', ['filter' => 'auth']);
 $routes->get('login', 'Home::login');
+$routes->post('login', 'AuthController::login');
+$routes->get('logout', 'AuthController::logout');
 
 // Client
-$routes->get('client/dashboard', 'Home::clientDashboard');
-$routes->get('client/depot', 'Home::clientDepot');
-$routes->get('client/retrait', 'Home::clientRetrait');
-$routes->get('client/transfert', 'Home::clientTransfert');
-$routes->get('client/historique', 'Home::clientHistorique');
-$routes->get('client/compte', 'Home::clientCompte');
+$routes->group('/client', ['filter' => 'auth'], function($routes) {
+    $routes->get('dashboard', 'Home::clientDashboard');
+    $routes->get('depot', 'Home::clientDepot');
+    $routes->get('retrait', 'Home::clientRetrait');
+    $routes->get('transfert', 'Home::clientTransfert');
+    $routes->get('historique', 'Home::clientHistorique');
+    $routes->get('compte', 'Home::clientCompte');
+});
 
 // Opérateur
-$routes->get('operateur/dashboard', 'Home::operateurDashboard');
-$routes->get('operateur/prefixes', 'Home::operateurPrefixesIndex');
-$routes->get('operateur/prefixes/create', 'Home::operateurPrefixesCreate');
-$routes->get('operateur/baremes', 'Home::operateurBaremesIndex');
-$routes->get('operateur/baremes/create', 'Home::operateurBaremesCreate');
+$routes->group('/operateur', ['filter' => 'auth'], function($routes){
+    $routes->get('', 'Home::operateurDashboard');
+    $routes->get('dashboard', 'Home::operateurDashboard');
+    $routes->get('prefixes', 'Home::operateurPrefixesIndex');
+    $routes->get('prefixes/create', 'Home::operateurPrefixesCreate');
+    $routes->get('baremes', 'Home::operateurBaremesIndex');
+    $routes->get('baremes/create', 'Home::operateurBaremesCreate');
+});
