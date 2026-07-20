@@ -78,33 +78,50 @@
 ****
 
 ## Version 2
-Atao hoe Yas le tompon'le Systeme D'Information ohatra eto 
---- 
 
-- [x] Creer une table operateur
-- [x] Creer Model et Service (meme si y a rien encore dans Service)
-  
+Atao hoe Yas le tompon'ny Systeme D'Information, ohatra eto
+
+---
+
+### Mise en place multi-opérateurs (Miaro)
+
+- [x] Créer une table opérateur
+- [x] Créer Model et Service (même si y a rien encore dans Service)
 - [x] Ajouter colonne prefixe[id_operateur]
-- [x] mettre a jour jeu de donnees (atao ID = 1 YAS, de apetraka fotsiny ny ambiny)
-- [x] mettre a jour fonction d'obtention de prefixe, pour filtrer si on veut prendre nos propres prefixes, ou celui d'un operateur particulier, ou tout
-  
-- [x] Creer table commission: #idOperateur, %age commission
-- [x] Dans Transaction: 
-  - [x] Ajouter colonne montant commission
-  - [x] ajouter colonne idOperateurDestinataire 
+- [x] Mettre à jour jeu de données (ID = 1 pour Yas, arranger le reste)
+- [x] Mettre à jour fonction d'obtention de préfixe, pour filtrer si on veut prendre nos propres préfixes, ou celui d'un opérateur particulier, ou tout
 
-- [x] affichage dynamique Frais quand Client veut effectuer une transaction
+---
 
-- [ ] Mettre a jour page Situation gain - CaD afficher la somme des gains obtenus depuis des transactions :
-  - [ ] Depot + retrait + transferts Yas2Yas
-  - [ ] Transferts Yas2Autre
-- [ ] Nouvelle page: montants a envoyer a chaque operateur
-  - [ ] lister chaque operateur
-  - [ ] determiner le montant (total commissions ngamba ty ?) pour chaque operateur
+### Commissions et gains (Ryan)
 
-- [ ] Client qui veut faire transfert: proposer d'envoyer le frais de retrait du destinataire:
-  - [x] obtenir liste baremesRetraits dans la page transfert
-  - [x] dynamique onChange montant (afficher frais deja fait): checkbox "Inclure des frais de retraits XXXX Ar"
-  - [x] dynamique si Yas2Autre: afficher Commission prelevee
-  - [ ] dynamique: ajouter commission si Yas2Autre 
-  
+#### Table commission
+- [x] Créer table commission : #idOperateur, %age commission
+
+#### Table transaction
+- [x] Ajouter colonne montant commission
+- [x] Ajouter colonne idOperateurDestinataire
+
+#### Affichage
+- [x] Affichage dynamique frais quand client veut effectuer une transaction
+
+#### Page Situation gain
+- [x] Mettre à jour page Situation gain, c'est-à-dire afficher la somme des gains obtenus depuis des transactions :
+  - [x] Dépôt + retrait + transferts Yas2Yas
+  - [x] Transferts Yas2Autre
+
+#### Nouvelle page : montants à envoyer à chaque opérateur
+- [x] Lister chaque opérateur
+- [x] Déterminer le montant (total commissions) pour chaque opérateur
+
+---
+
+### Transfert — frais et commission (Miaro)
+
+- [ ] Client qui veut faire transfert : proposer d'envoyer le frais de retrait du destinataire
+  - [x] Obtenir liste baremesRetraits dans la page transfert
+  - [x] Dynamique onChange montant (afficher frais déjà fait) : checkbox "Inclure des frais de retraits XXXX Ar"
+  - [x] Dynamique si Yas2Autre : afficher commission prélevée
+  - [ ] Dynamique : ajouter commission si Yas2Autre
+
+---
