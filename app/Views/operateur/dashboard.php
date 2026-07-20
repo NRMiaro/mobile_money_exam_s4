@@ -41,6 +41,27 @@ $pageDesc   = 'Vue d\'ensemble de la plateforme';
     </div>
 </div>
 
+<div class="row g-3 mb-4">
+    <div class="col-md-6">
+        <div class="stat-card">
+            <div class="stat-ico">&#9793;</div>
+            <div>
+                <div class="stat-value"><?= number_format($gainOperateur, 0, ',', ' ') ?> Ar</div>
+                <div class="stat-label">Gain opérateur (Transactions Internes)</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="stat-card">
+            <div class="stat-ico">&#8644;</div>
+            <div>
+                <div class="stat-value"><?= number_format($gainAutresOperateurs, 0, ',', ' ') ?> Ar</div>
+                <div class="stat-label">Gain avec autres opérateurs (Transactions Externes)</div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="eyebrow mb-2">Actions rapides</div>
 <div class="row g-3">
     <div class="col-md-6">

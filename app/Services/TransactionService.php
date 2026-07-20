@@ -83,4 +83,38 @@ class TransactionService
 
         return '+';
     }
+
+    public function getSituationGain()
+    {
+
+        // Gain opérateur (Yas) : DEPOT + RETRAIT + TRANSFERT vers Yas
+        $gainOperateur = $this->model->selectSum('frais')
+            ->groupStart()
+            ->whereIn('id_type_transaction', [TypeTransactionModel::DEPOT_ID, TypeTransactionModel::RETRAIT_ID]) // DEPOT, RETRAIT
+            ->orGroupStart()
+            ->where('id_type_transaction', TypeTransactionModel::TRANSFERT_ID) // TRANSFERT
+            ->groupStart()
+            ->where('id_operateur_destinataire', TransactionModel::OPERATEUR_ID)
+            ->orWhere('id_operateur_destinataire', null)
+            ->groupEnd()
+            ->groupEnd()
+            ->groupEnd()
+            ->get()
+            ->getRow()
+            ->frais ?? 0;
+
+        // Gain autres opérateurs : TRANSFERT vers tout ce qui n'est PAS Yas
+        $gainAutres = $this->model->selectSum('frais')
+            ->where('id_type_transaction', TypeTransactionModel::TRANSFERT_ID) // TRANSFERT
+            ->where('id_operateur_destinataire !=', TransactionModel::OPERATEUR_ID)
+            ->where('id_operateur_destinataire IS NOT NULL')
+            ->get()
+            ->getRow()
+            ->frais ?? 0;
+
+        return [
+            'gain_operateur' => (float) $gainOperateur,
+            'gain_autres_operateurs' => (float) $gainAutres,
+        ];
+    }
 }

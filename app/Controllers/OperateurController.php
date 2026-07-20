@@ -27,10 +27,13 @@ class OperateurController extends BaseController
         $transactionService = new TransactionService();
         $prefixeService = new PrefixeService();
         $utilisateurService = new UtilisateurService();
+        $situationGain = $transactionService->getSituationGain();
         $data = [
             'totalGains' => $transactionService->getTotalGains(),
             'totalPrefixes' => $prefixeService->getTotalPrefixes(),
-            'nombreClientsActifs' => $utilisateurService->countClientsActifs()
+            'nombreClientsActifs' => $utilisateurService->countClientsActifs(),
+            'gainOperateur'=>$situationGain['gain_operateur'],
+            'gainAutresOperateurs' => $situationGain['gain_autres_operateurs']
         ];
 
         return view("operateur/dashboard", $data);
