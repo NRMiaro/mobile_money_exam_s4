@@ -16,7 +16,7 @@ class BaremeModel extends Model
         'frais'
     ];
 
-    protected $casts = [
+    protected array $casts = [
         'id' => 'int',
         'id_type_transaction' => 'int',
         'montant_min' => 'float',

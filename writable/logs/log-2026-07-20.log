@@ -1087,3 +1087,385 @@ DEBUG - 2026-07-20 08:57:51 --> Session: Class initialized using 'CodeIgniter\Se
 DEBUG - 2026-07-20 08:58:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 DEBUG - 2026-07-20 08:58:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 DEBUG - 2026-07-20 08:58:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:01:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:01:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:03:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:16:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-20 09:16:08 --> ErrorException: Type of App\Models\BaremeModel::$casts must be array (as in class CodeIgniter\BaseModel)
+[Method: GET, Route: operateur/baremes]
+in APPPATH/Models/BaremeModel.php on line 7.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+DEBUG - 2026-07-20 09:16:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:16:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:16:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:16:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:16:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:16:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:16:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:16:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:17:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-20 09:17:03 --> TypeError: count(): Argument #1 ($value) must be of type Countable|array, App\Models\BaremeModel given
+[Method: GET, Route: operateur/baremes]
+in APPPATH/Views/operateur/bareme/index.php on line 94.
+ 1 SYSTEMPATH/View/View.php(240): include()
+ 2 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():237}()
+ 3 SYSTEMPATH/Common.php(1268): CodeIgniter\View\View->render()
+ 4 APPPATH/Controllers/OperateurController.php(55): view()
+ 5 SYSTEMPATH/CodeIgniter.php(974): App\Controllers\OperateurController->operateurBaremesIndex()
+ 6 SYSTEMPATH/CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH/CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest()
+ 8 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+10 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+11 SYSTEMPATH/rewrite.php(44): require_once('/home/miaronr/Documents/S4/mr_rojo/mobile_money_exam_s4/public/index.php')
+DEBUG - 2026-07-20 09:17:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-20 09:17:04 --> TypeError: count(): Argument #1 ($value) must be of type Countable|array, App\Models\BaremeModel given
+[Method: GET, Route: operateur/baremes]
+in APPPATH/Views/operateur/bareme/index.php on line 94.
+ 1 SYSTEMPATH/View/View.php(240): include()
+ 2 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():237}()
+ 3 SYSTEMPATH/Common.php(1268): CodeIgniter\View\View->render()
+ 4 APPPATH/Controllers/OperateurController.php(55): view()
+ 5 SYSTEMPATH/CodeIgniter.php(974): App\Controllers\OperateurController->operateurBaremesIndex()
+ 6 SYSTEMPATH/CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH/CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest()
+ 8 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+10 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+11 SYSTEMPATH/rewrite.php(44): require_once('/home/miaronr/Documents/S4/mr_rojo/mobile_money_exam_s4/public/index.php')
+DEBUG - 2026-07-20 09:17:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-20 09:17:04 --> TypeError: count(): Argument #1 ($value) must be of type Countable|array, App\Models\BaremeModel given
+[Method: GET, Route: operateur/baremes]
+in APPPATH/Views/operateur/bareme/index.php on line 94.
+ 1 SYSTEMPATH/View/View.php(240): include()
+ 2 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():237}()
+ 3 SYSTEMPATH/Common.php(1268): CodeIgniter\View\View->render()
+ 4 APPPATH/Controllers/OperateurController.php(55): view()
+ 5 SYSTEMPATH/CodeIgniter.php(974): App\Controllers\OperateurController->operateurBaremesIndex()
+ 6 SYSTEMPATH/CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH/CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest()
+ 8 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+10 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+11 SYSTEMPATH/rewrite.php(44): require_once('/home/miaronr/Documents/S4/mr_rojo/mobile_money_exam_s4/public/index.php')
+DEBUG - 2026-07-20 09:17:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-20 09:17:04 --> TypeError: count(): Argument #1 ($value) must be of type Countable|array, App\Models\BaremeModel given
+[Method: GET, Route: operateur/baremes]
+in APPPATH/Views/operateur/bareme/index.php on line 94.
+ 1 SYSTEMPATH/View/View.php(240): include()
+ 2 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():237}()
+ 3 SYSTEMPATH/Common.php(1268): CodeIgniter\View\View->render()
+ 4 APPPATH/Controllers/OperateurController.php(55): view()
+ 5 SYSTEMPATH/CodeIgniter.php(974): App\Controllers\OperateurController->operateurBaremesIndex()
+ 6 SYSTEMPATH/CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH/CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest()
+ 8 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+10 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+11 SYSTEMPATH/rewrite.php(44): require_once('/home/miaronr/Documents/S4/mr_rojo/mobile_money_exam_s4/public/index.php')
+DEBUG - 2026-07-20 09:17:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-20 09:17:05 --> TypeError: count(): Argument #1 ($value) must be of type Countable|array, App\Models\BaremeModel given
+[Method: GET, Route: operateur/baremes]
+in APPPATH/Views/operateur/bareme/index.php on line 94.
+ 1 SYSTEMPATH/View/View.php(240): include()
+ 2 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():237}()
+ 3 SYSTEMPATH/Common.php(1268): CodeIgniter\View\View->render()
+ 4 APPPATH/Controllers/OperateurController.php(55): view()
+ 5 SYSTEMPATH/CodeIgniter.php(974): App\Controllers\OperateurController->operateurBaremesIndex()
+ 6 SYSTEMPATH/CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH/CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest()
+ 8 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+10 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+11 SYSTEMPATH/rewrite.php(44): require_once('/home/miaronr/Documents/S4/mr_rojo/mobile_money_exam_s4/public/index.php')
+DEBUG - 2026-07-20 09:17:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-20 09:17:05 --> TypeError: count(): Argument #1 ($value) must be of type Countable|array, App\Models\BaremeModel given
+[Method: GET, Route: operateur/baremes]
+in APPPATH/Views/operateur/bareme/index.php on line 94.
+ 1 SYSTEMPATH/View/View.php(240): include()
+ 2 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():237}()
+ 3 SYSTEMPATH/Common.php(1268): CodeIgniter\View\View->render()
+ 4 APPPATH/Controllers/OperateurController.php(55): view()
+ 5 SYSTEMPATH/CodeIgniter.php(974): App\Controllers\OperateurController->operateurBaremesIndex()
+ 6 SYSTEMPATH/CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH/CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest()
+ 8 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+10 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+11 SYSTEMPATH/rewrite.php(44): require_once('/home/miaronr/Documents/S4/mr_rojo/mobile_money_exam_s4/public/index.php')
+DEBUG - 2026-07-20 09:17:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-20 09:17:05 --> TypeError: count(): Argument #1 ($value) must be of type Countable|array, App\Models\BaremeModel given
+[Method: GET, Route: operateur/baremes]
+in APPPATH/Views/operateur/bareme/index.php on line 94.
+ 1 SYSTEMPATH/View/View.php(240): include()
+ 2 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():237}()
+ 3 SYSTEMPATH/Common.php(1268): CodeIgniter\View\View->render()
+ 4 APPPATH/Controllers/OperateurController.php(55): view()
+ 5 SYSTEMPATH/CodeIgniter.php(974): App\Controllers\OperateurController->operateurBaremesIndex()
+ 6 SYSTEMPATH/CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH/CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest()
+ 8 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+10 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+11 SYSTEMPATH/rewrite.php(44): require_once('/home/miaronr/Documents/S4/mr_rojo/mobile_money_exam_s4/public/index.php')
+DEBUG - 2026-07-20 09:17:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-20 09:17:05 --> TypeError: count(): Argument #1 ($value) must be of type Countable|array, App\Models\BaremeModel given
+[Method: GET, Route: operateur/baremes]
+in APPPATH/Views/operateur/bareme/index.php on line 94.
+ 1 SYSTEMPATH/View/View.php(240): include()
+ 2 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():237}()
+ 3 SYSTEMPATH/Common.php(1268): CodeIgniter\View\View->render()
+ 4 APPPATH/Controllers/OperateurController.php(55): view()
+ 5 SYSTEMPATH/CodeIgniter.php(974): App\Controllers\OperateurController->operateurBaremesIndex()
+ 6 SYSTEMPATH/CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH/CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest()
+ 8 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+10 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+11 SYSTEMPATH/rewrite.php(44): require_once('/home/miaronr/Documents/S4/mr_rojo/mobile_money_exam_s4/public/index.php')
+DEBUG - 2026-07-20 09:17:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-20 09:17:05 --> TypeError: count(): Argument #1 ($value) must be of type Countable|array, App\Models\BaremeModel given
+[Method: GET, Route: operateur/baremes]
+in APPPATH/Views/operateur/bareme/index.php on line 94.
+ 1 SYSTEMPATH/View/View.php(240): include()
+ 2 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():237}()
+ 3 SYSTEMPATH/Common.php(1268): CodeIgniter\View\View->render()
+ 4 APPPATH/Controllers/OperateurController.php(55): view()
+ 5 SYSTEMPATH/CodeIgniter.php(974): App\Controllers\OperateurController->operateurBaremesIndex()
+ 6 SYSTEMPATH/CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH/CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest()
+ 8 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+10 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+11 SYSTEMPATH/rewrite.php(44): require_once('/home/miaronr/Documents/S4/mr_rojo/mobile_money_exam_s4/public/index.php')
+DEBUG - 2026-07-20 09:17:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-20 09:17:05 --> TypeError: count(): Argument #1 ($value) must be of type Countable|array, App\Models\BaremeModel given
+[Method: GET, Route: operateur/baremes]
+in APPPATH/Views/operateur/bareme/index.php on line 94.
+ 1 SYSTEMPATH/View/View.php(240): include()
+ 2 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():237}()
+ 3 SYSTEMPATH/Common.php(1268): CodeIgniter\View\View->render()
+ 4 APPPATH/Controllers/OperateurController.php(55): view()
+ 5 SYSTEMPATH/CodeIgniter.php(974): App\Controllers\OperateurController->operateurBaremesIndex()
+ 6 SYSTEMPATH/CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH/CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest()
+ 8 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+10 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+11 SYSTEMPATH/rewrite.php(44): require_once('/home/miaronr/Documents/S4/mr_rojo/mobile_money_exam_s4/public/index.php')
+DEBUG - 2026-07-20 09:17:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-20 09:17:06 --> TypeError: count(): Argument #1 ($value) must be of type Countable|array, App\Models\BaremeModel given
+[Method: GET, Route: operateur/baremes]
+in APPPATH/Views/operateur/bareme/index.php on line 94.
+ 1 SYSTEMPATH/View/View.php(240): include()
+ 2 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():237}()
+ 3 SYSTEMPATH/Common.php(1268): CodeIgniter\View\View->render()
+ 4 APPPATH/Controllers/OperateurController.php(55): view()
+ 5 SYSTEMPATH/CodeIgniter.php(974): App\Controllers\OperateurController->operateurBaremesIndex()
+ 6 SYSTEMPATH/CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH/CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest()
+ 8 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+10 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+11 SYSTEMPATH/rewrite.php(44): require_once('/home/miaronr/Documents/S4/mr_rojo/mobile_money_exam_s4/public/index.php')
+DEBUG - 2026-07-20 09:17:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-20 09:17:06 --> TypeError: count(): Argument #1 ($value) must be of type Countable|array, App\Models\BaremeModel given
+[Method: GET, Route: operateur/baremes]
+in APPPATH/Views/operateur/bareme/index.php on line 94.
+ 1 SYSTEMPATH/View/View.php(240): include()
+ 2 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():237}()
+ 3 SYSTEMPATH/Common.php(1268): CodeIgniter\View\View->render()
+ 4 APPPATH/Controllers/OperateurController.php(55): view()
+ 5 SYSTEMPATH/CodeIgniter.php(974): App\Controllers\OperateurController->operateurBaremesIndex()
+ 6 SYSTEMPATH/CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH/CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest()
+ 8 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+10 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+11 SYSTEMPATH/rewrite.php(44): require_once('/home/miaronr/Documents/S4/mr_rojo/mobile_money_exam_s4/public/index.php')
+DEBUG - 2026-07-20 09:17:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-20 09:17:14 --> TypeError: count(): Argument #1 ($value) must be of type Countable|array, App\Models\BaremeModel given
+[Method: GET, Route: operateur/baremes]
+in APPPATH/Views/operateur/bareme/index.php on line 94.
+ 1 SYSTEMPATH/View/View.php(240): include()
+ 2 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():237}()
+ 3 SYSTEMPATH/Common.php(1268): CodeIgniter\View\View->render()
+ 4 APPPATH/Controllers/OperateurController.php(55): view()
+ 5 SYSTEMPATH/CodeIgniter.php(974): App\Controllers\OperateurController->operateurBaremesIndex()
+ 6 SYSTEMPATH/CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH/CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest()
+ 8 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+10 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+11 SYSTEMPATH/rewrite.php(44): require_once('/home/miaronr/Documents/S4/mr_rojo/mobile_money_exam_s4/public/index.php')
+DEBUG - 2026-07-20 09:17:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-20 09:17:14 --> TypeError: count(): Argument #1 ($value) must be of type Countable|array, App\Models\BaremeModel given
+[Method: GET, Route: operateur/baremes]
+in APPPATH/Views/operateur/bareme/index.php on line 94.
+ 1 SYSTEMPATH/View/View.php(240): include()
+ 2 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():237}()
+ 3 SYSTEMPATH/Common.php(1268): CodeIgniter\View\View->render()
+ 4 APPPATH/Controllers/OperateurController.php(55): view()
+ 5 SYSTEMPATH/CodeIgniter.php(974): App\Controllers\OperateurController->operateurBaremesIndex()
+ 6 SYSTEMPATH/CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH/CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest()
+ 8 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+10 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+11 SYSTEMPATH/rewrite.php(44): require_once('/home/miaronr/Documents/S4/mr_rojo/mobile_money_exam_s4/public/index.php')
+DEBUG - 2026-07-20 09:17:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-20 09:17:14 --> TypeError: count(): Argument #1 ($value) must be of type Countable|array, App\Models\BaremeModel given
+[Method: GET, Route: operateur/baremes]
+in APPPATH/Views/operateur/bareme/index.php on line 94.
+ 1 SYSTEMPATH/View/View.php(240): include()
+ 2 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():237}()
+ 3 SYSTEMPATH/Common.php(1268): CodeIgniter\View\View->render()
+ 4 APPPATH/Controllers/OperateurController.php(55): view()
+ 5 SYSTEMPATH/CodeIgniter.php(974): App\Controllers\OperateurController->operateurBaremesIndex()
+ 6 SYSTEMPATH/CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH/CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest()
+ 8 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+10 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+11 SYSTEMPATH/rewrite.php(44): require_once('/home/miaronr/Documents/S4/mr_rojo/mobile_money_exam_s4/public/index.php')
+DEBUG - 2026-07-20 09:17:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-20 09:17:14 --> TypeError: count(): Argument #1 ($value) must be of type Countable|array, App\Models\BaremeModel given
+[Method: GET, Route: operateur/baremes]
+in APPPATH/Views/operateur/bareme/index.php on line 94.
+ 1 SYSTEMPATH/View/View.php(240): include()
+ 2 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():237}()
+ 3 SYSTEMPATH/Common.php(1268): CodeIgniter\View\View->render()
+ 4 APPPATH/Controllers/OperateurController.php(55): view()
+ 5 SYSTEMPATH/CodeIgniter.php(974): App\Controllers\OperateurController->operateurBaremesIndex()
+ 6 SYSTEMPATH/CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH/CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest()
+ 8 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+10 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+11 SYSTEMPATH/rewrite.php(44): require_once('/home/miaronr/Documents/S4/mr_rojo/mobile_money_exam_s4/public/index.php')
+DEBUG - 2026-07-20 09:17:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-20 09:17:14 --> TypeError: count(): Argument #1 ($value) must be of type Countable|array, App\Models\BaremeModel given
+[Method: GET, Route: operateur/baremes]
+in APPPATH/Views/operateur/bareme/index.php on line 94.
+ 1 SYSTEMPATH/View/View.php(240): include()
+ 2 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():237}()
+ 3 SYSTEMPATH/Common.php(1268): CodeIgniter\View\View->render()
+ 4 APPPATH/Controllers/OperateurController.php(55): view()
+ 5 SYSTEMPATH/CodeIgniter.php(974): App\Controllers\OperateurController->operateurBaremesIndex()
+ 6 SYSTEMPATH/CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH/CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest()
+ 8 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+10 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+11 SYSTEMPATH/rewrite.php(44): require_once('/home/miaronr/Documents/S4/mr_rojo/mobile_money_exam_s4/public/index.php')
+DEBUG - 2026-07-20 09:17:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-20 09:17:15 --> TypeError: count(): Argument #1 ($value) must be of type Countable|array, App\Models\BaremeModel given
+[Method: GET, Route: operateur/baremes]
+in APPPATH/Views/operateur/bareme/index.php on line 94.
+ 1 SYSTEMPATH/View/View.php(240): include()
+ 2 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():237}()
+ 3 SYSTEMPATH/Common.php(1268): CodeIgniter\View\View->render()
+ 4 APPPATH/Controllers/OperateurController.php(55): view()
+ 5 SYSTEMPATH/CodeIgniter.php(974): App\Controllers\OperateurController->operateurBaremesIndex()
+ 6 SYSTEMPATH/CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH/CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest()
+ 8 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+10 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+11 SYSTEMPATH/rewrite.php(44): require_once('/home/miaronr/Documents/S4/mr_rojo/mobile_money_exam_s4/public/index.php')
+DEBUG - 2026-07-20 09:17:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-20 09:17:15 --> TypeError: count(): Argument #1 ($value) must be of type Countable|array, App\Models\BaremeModel given
+[Method: GET, Route: operateur/baremes]
+in APPPATH/Views/operateur/bareme/index.php on line 94.
+ 1 SYSTEMPATH/View/View.php(240): include()
+ 2 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():237}()
+ 3 SYSTEMPATH/Common.php(1268): CodeIgniter\View\View->render()
+ 4 APPPATH/Controllers/OperateurController.php(55): view()
+ 5 SYSTEMPATH/CodeIgniter.php(974): App\Controllers\OperateurController->operateurBaremesIndex()
+ 6 SYSTEMPATH/CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH/CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest()
+ 8 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+10 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+11 SYSTEMPATH/rewrite.php(44): require_once('/home/miaronr/Documents/S4/mr_rojo/mobile_money_exam_s4/public/index.php')
+DEBUG - 2026-07-20 09:17:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-20 09:17:15 --> TypeError: count(): Argument #1 ($value) must be of type Countable|array, App\Models\BaremeModel given
+[Method: GET, Route: operateur/baremes]
+in APPPATH/Views/operateur/bareme/index.php on line 94.
+ 1 SYSTEMPATH/View/View.php(240): include()
+ 2 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():237}()
+ 3 SYSTEMPATH/Common.php(1268): CodeIgniter\View\View->render()
+ 4 APPPATH/Controllers/OperateurController.php(55): view()
+ 5 SYSTEMPATH/CodeIgniter.php(974): App\Controllers\OperateurController->operateurBaremesIndex()
+ 6 SYSTEMPATH/CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH/CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest()
+ 8 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+10 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+11 SYSTEMPATH/rewrite.php(44): require_once('/home/miaronr/Documents/S4/mr_rojo/mobile_money_exam_s4/public/index.php')
+DEBUG - 2026-07-20 09:17:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-20 09:17:15 --> TypeError: count(): Argument #1 ($value) must be of type Countable|array, App\Models\BaremeModel given
+[Method: GET, Route: operateur/baremes]
+in APPPATH/Views/operateur/bareme/index.php on line 94.
+ 1 SYSTEMPATH/View/View.php(240): include()
+ 2 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():237}()
+ 3 SYSTEMPATH/Common.php(1268): CodeIgniter\View\View->render()
+ 4 APPPATH/Controllers/OperateurController.php(55): view()
+ 5 SYSTEMPATH/CodeIgniter.php(974): App\Controllers\OperateurController->operateurBaremesIndex()
+ 6 SYSTEMPATH/CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH/CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest()
+ 8 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+10 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+11 SYSTEMPATH/rewrite.php(44): require_once('/home/miaronr/Documents/S4/mr_rojo/mobile_money_exam_s4/public/index.php')
+DEBUG - 2026-07-20 09:17:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-20 09:17:15 --> TypeError: count(): Argument #1 ($value) must be of type Countable|array, App\Models\BaremeModel given
+[Method: GET, Route: operateur/baremes]
+in APPPATH/Views/operateur/bareme/index.php on line 94.
+ 1 SYSTEMPATH/View/View.php(240): include()
+ 2 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():237}()
+ 3 SYSTEMPATH/Common.php(1268): CodeIgniter\View\View->render()
+ 4 APPPATH/Controllers/OperateurController.php(55): view()
+ 5 SYSTEMPATH/CodeIgniter.php(974): App\Controllers\OperateurController->operateurBaremesIndex()
+ 6 SYSTEMPATH/CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH/CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest()
+ 8 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+10 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+11 SYSTEMPATH/rewrite.php(44): require_once('/home/miaronr/Documents/S4/mr_rojo/mobile_money_exam_s4/public/index.php')
+DEBUG - 2026-07-20 09:17:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-20 09:17:15 --> TypeError: count(): Argument #1 ($value) must be of type Countable|array, App\Models\BaremeModel given
+[Method: GET, Route: operateur/baremes]
+in APPPATH/Views/operateur/bareme/index.php on line 94.
+ 1 SYSTEMPATH/View/View.php(240): include()
+ 2 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():237}()
+ 3 SYSTEMPATH/Common.php(1268): CodeIgniter\View\View->render()
+ 4 APPPATH/Controllers/OperateurController.php(55): view()
+ 5 SYSTEMPATH/CodeIgniter.php(974): App\Controllers\OperateurController->operateurBaremesIndex()
+ 6 SYSTEMPATH/CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH/CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest()
+ 8 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+10 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+11 SYSTEMPATH/rewrite.php(44): require_once('/home/miaronr/Documents/S4/mr_rojo/mobile_money_exam_s4/public/index.php')
+DEBUG - 2026-07-20 09:17:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-20 09:17:15 --> TypeError: count(): Argument #1 ($value) must be of type Countable|array, App\Models\BaremeModel given
+[Method: GET, Route: operateur/baremes]
+in APPPATH/Views/operateur/bareme/index.php on line 94.
+ 1 SYSTEMPATH/View/View.php(240): include()
+ 2 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->{closure:CodeIgniter\View\View::render():237}()
+ 3 SYSTEMPATH/Common.php(1268): CodeIgniter\View\View->render()
+ 4 APPPATH/Controllers/OperateurController.php(55): view()
+ 5 SYSTEMPATH/CodeIgniter.php(974): App\Controllers\OperateurController->operateurBaremesIndex()
+ 6 SYSTEMPATH/CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH/CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest()
+ 8 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+10 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+11 SYSTEMPATH/rewrite.php(44): require_once('/home/miaronr/Documents/S4/mr_rojo/mobile_money_exam_s4/public/index.php')
+DEBUG - 2026-07-20 09:18:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:18:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:18:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:18:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:18:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:18:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
