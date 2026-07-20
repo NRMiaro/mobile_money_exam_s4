@@ -78,19 +78,24 @@
 
 
 ## Version 2
+Atao hoe Yas le tompon'le Systeme D'Information ohatra eto 
+--- 
+
 - [ ] Creer une table operateur
 - [ ] Creer Model et Service (meme si y a rien encore dans Service)
   
 - [ ] Ajouter colonne prefixe[id_operateur]
-- [ ] mettre a jour jeu de donnees (atao ID = 1 ny operateur tompon'le SI, de apetraka fotsiny ny ambiny)
-- [ ] mettre a jour fonction d'obtention de prefixe, pour filtrer si on veut prendre nos propres prefixes, ou celui d'un operateur particulier, ou tout
+- [ ] mettre a jour jeu de donnees (atao ID = 1 YAS, de apetraka fotsiny id an'ny ambiny)
+- [ ] mettre a jour fonction d'obtention du prefixe de YAS, ou d'un autre operateur demande
   
-- [ ] Creer table commission: id_bareme, idOperateur, %age commission
-- [ ] Mettre a jour tout ce qui est CRUD bareme transfert (mila ampiana Commission pour chqaue operateur)
+- [ ] Creer table commission: idOperateur, %age commission
 - [ ] Dans Transaction: 
   - [ ] Ajouter colonne montant commission
   - [ ] ajouter colonne idOperateurDestinataire 
 
-- [ ] Mettre a jour page Situation gain: separer les gains entre l'operateur1 et le reste
+- [ ] Mettre a jour page Situation gain - CaD afficher la somme des gains obtenus depuis des transactions :
+  - [ ] Depot + retrait + transferts Yas2Yas
+  - [ ] Transferts Yas2Autre
 - [ ] Nouvelle page: montants a envoyer a chaque operateur
-  - [ ] lister chaque operateur: determiner le montant de commission a 
+  - [ ] lister chaque operateur
+  - [ ] determiner le montant (total commissions ngamba ty ?) pour chaque operateur
