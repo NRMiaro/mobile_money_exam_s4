@@ -1,6 +1,7 @@
 /* =========================================================
    MoneyLink — thème "style MVola" (mobile money Madagascar)
    Palette : jaune vif (signature) + noir/anthracite (contraste fort)
+   + Responsive complet + contenu centré
    ========================================================= */
 
 :root{
@@ -20,9 +21,18 @@
   --mm-shadow:         0 4px 16px rgba(26, 26, 26, 0.08);
   --mm-shadow-lg:      0 12px 32px rgba(26, 26, 26, 0.16);
   --mm-font: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+
+  /* Largeur max du contenu, pour centrer sur grand écran */
+  --mm-content-max: 1180px;
+  --mm-sidebar-width: 264px;
 }
 
 *{ box-sizing: border-box; }
+
+html, body{
+  width: 100%;
+  overflow-x: hidden; /* évite le scroll horizontal parasite en mobile */
+}
 
 body{
   font-family: var(--mm-font);
@@ -32,6 +42,8 @@ body{
 }
 
 a{ text-decoration: none; }
+
+img, svg{ max-width: 100%; height: auto; }
 
 .eyebrow{
   text-transform: uppercase;
@@ -166,7 +178,7 @@ a{ text-decoration: none; }
 }
 
 .mm-sidebar{
-  width: 264px;
+  width: var(--mm-sidebar-width);
   flex-shrink: 0;
   background: linear-gradient(180deg, #0D0D0D, #1A1A1A);
   color: #F5F1E3;
@@ -175,6 +187,7 @@ a{ text-decoration: none; }
   position: sticky;
   top: 0;
   height: 100vh;
+  z-index: 1050;
 }
 
 .mm-sidebar .sidebar-brand{
@@ -183,6 +196,7 @@ a{ text-decoration: none; }
   gap: 12px;
   padding: 22px 20px;
   border-bottom: 1px solid rgba(255,204,0,.15);
+  position: relative;
 }
 
 .mm-sidebar .logo-mark{
@@ -192,6 +206,7 @@ a{ text-decoration: none; }
   display:flex; align-items:center; justify-content:center;
   color: var(--mm-primary-dark);
   font-weight: 800;
+  flex-shrink: 0;
 }
 
 .mm-sidebar .brand-name{
@@ -228,6 +243,7 @@ a{ text-decoration: none; }
   display: flex;
   flex-direction: column;
   gap: 4px;
+  overflow-y: auto;
 }
 
 .mm-nav .nav-link{
@@ -246,6 +262,7 @@ a{ text-decoration: none; }
   width: 20px;
   text-align: center;
   font-size: 1rem;
+  flex-shrink: 0;
 }
 
 .mm-nav .nav-link:hover{
@@ -286,6 +303,8 @@ a{ text-decoration: none; }
   display:flex;
   align-items:center;
   justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
 .mm-topbar h1{
@@ -299,9 +318,23 @@ a{ text-decoration: none; }
   color: var(--mm-text-muted);
 }
 
+/* Contenu centré avec largeur max, quel que soit l'écran */
 .mm-content{
   flex: 1;
+  width: 100%;
+  max-width: var(--mm-content-max);
+  margin-left: auto;
+  margin-right: auto;
   padding: 28px 32px;
+}
+
+/* Le topbar et le footer suivent aussi le centrage, via un wrapper interne */
+.mm-topbar-inner,
+.mm-footer-inner{
+  width: 100%;
+  max-width: var(--mm-content-max);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .mm-footer{
@@ -404,6 +437,7 @@ a{ text-decoration: none; }
   letter-spacing: -.02em;
   margin: 6px 0 2px;
   position: relative;
+  word-break: break-word;
 }
 
 .balance-ticket .bt-numero{
@@ -450,6 +484,7 @@ a{ text-decoration: none; }
   font-weight: 800;
   color: var(--mm-primary-dark);
   line-height: 1.1;
+  word-break: break-word;
 }
 .stat-card .stat-label{
   font-size: .76rem;
@@ -462,7 +497,10 @@ a{ text-decoration: none; }
    FORMULAIRES OPERATIONS (depot / retrait / transfert)
 --------------------------------------------------------- */
 .op-form-card{
+  width: 100%;
   max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
   background: var(--mm-surface);
   border-radius: var(--mm-radius);
   box-shadow: var(--mm-shadow);
@@ -488,6 +526,7 @@ a{ text-decoration: none; }
   background: rgba(255,255,255,.18);
   display:flex; align-items:center; justify-content:center;
   font-size: 1.2rem;
+  flex-shrink: 0;
 }
 .op-form-head .op-title{ font-weight: 800; font-size: 1.05rem; }
 .op-form-head .op-sub{ font-size: .78rem; color: rgba(255,255,255,.85); }
@@ -529,6 +568,8 @@ a{ text-decoration: none; }
   display:flex;
   align-items:center;
   justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 .mm-table-card .card-head h2{
   font-size: 1.02rem;
@@ -537,7 +578,14 @@ a{ text-decoration: none; }
   margin: 0;
 }
 
-table.mm-table{ margin-bottom: 0; }
+/* Wrapper de scroll horizontal pour les tableaux en mobile */
+.mm-table-responsive{
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+table.mm-table{ margin-bottom: 0; width: 100%; }
 table.mm-table thead th{
   background: var(--mm-bg);
   color: var(--mm-text-muted);
@@ -547,6 +595,7 @@ table.mm-table thead th{
   font-weight: 700;
   border-bottom: 1px solid var(--mm-border);
   padding: 12px 22px;
+  white-space: nowrap;
 }
 table.mm-table tbody td{
   padding: 13px 22px;
@@ -563,6 +612,7 @@ table.mm-table tbody tr:last-child td{ border-bottom: none; }
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: .03em;
+  white-space: nowrap;
 }
 .badge-op.depot{ background: rgba(46,125,91,.12); color: var(--mm-success); }
 .badge-op.retrait{ background: rgba(192,57,43,.12); color: var(--mm-danger); }
@@ -574,25 +624,80 @@ table.mm-table tbody tr:last-child td{ border-bottom: none; }
 .profile-row{
   display:flex;
   justify-content: space-between;
+  gap: 12px;
   padding: 14px 0;
   border-bottom: 1px dashed var(--mm-border);
   font-size: .9rem;
+  flex-wrap: wrap;
 }
 .profile-row:last-child{ border-bottom: none; }
 .profile-row .p-label{ color: var(--mm-text-muted); font-weight: 600; }
-.profile-row .p-value{ color: var(--mm-text); font-weight: 700; }
+.profile-row .p-value{ color: var(--mm-text); font-weight: 700; word-break: break-word; }
 
-/* Responsive */
+/* ---------------------------------------------------------
+   RESPONSIVE — toggle sidebar + overlay (mobile/tablette)
+--------------------------------------------------------- */
+.mm-sidebar-toggle{
+  display: none;
+  position: fixed;
+  top: 14px;
+  left: 14px;
+  z-index: 1100;
+  background: var(--mm-primary-dark);
+  border: none;
+  border-radius: 8px;
+  padding: 10px 12px;
+  box-shadow: var(--mm-shadow);
+  flex-direction: column;   /* empile les barres verticalement */
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+
+.mm-sidebar-overlay{
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.45);
+  z-index: 1040;
+}
+.mm-sidebar-overlay.show{ display: block; }
+
+/* Tablette et mobile : sidebar en tiroir plein écran */
 @media (max-width: 900px){
+  .mm-sidebar-toggle{ display: flex; }  /* flex + flex-direction:column ci-dessus */
   .mm-sidebar{
     position: fixed;
-    left: -264px;
-    z-index: 1050;
+    left: calc(-1 * var(--mm-sidebar-width));
+    top: 0;
     transition: left .2s ease;
   }
   .mm-sidebar.open{ left: 0; }
-  .mm-content{ padding: 20px 16px; }
-  .mm-topbar{ padding: 14px 16px; }
+
+  .mm-content{
+    padding: 20px 16px;
+    padding-top: 72px; /* place pour le bouton hamburger */
+  }
+  .mm-topbar{
+    padding: 14px 16px;
+    padding-left: 60px; /* évite que le titre passe sous le hamburger */
+  }
+  .mm-footer{ padding: 16px 16px; }
+
+  .op-form-card{ max-width: 100%; }
+}
+
+/* Petits mobiles : on resserre encore un peu */
+@media (max-width: 480px){
+  .mm-content{ padding: 16px 12px; padding-top: 68px; }
+  .mm-topbar{ padding: 12px 12px; padding-left: 56px; }
+  .mm-topbar h1{ font-size: 1.05rem; }
+  .auth-card{ padding: 28px 22px; }
+  .stat-card{ padding: 16px; gap: 12px; }
+  .stat-card .stat-value{ font-size: 1.15rem; }
+  .action-card{ padding: 16px; gap: 12px; }
+  table.mm-table thead th,
+  table.mm-table tbody td{ padding: 10px 14px; }
 }
 
 
@@ -601,6 +706,7 @@ table.mm-table tbody tr:last-child td{ border-bottom: none; }
 --------------------------------------------------------- */
 .bareme-switch{
   display: inline-flex;
+  flex-wrap: wrap;
   background: var(--mm-bg);
   border: 1px solid var(--mm-border);
   border-radius: 12px;
@@ -627,6 +733,7 @@ table.mm-table tbody tr:last-child td{ border-bottom: none; }
   cursor: pointer;
   box-shadow: none;
   transition: background .15s ease, color .15s ease, box-shadow .15s ease;
+  white-space: nowrap;
 }
 
 .bareme-switch .btn-segment:hover{
@@ -667,3 +774,16 @@ table.mm-table tbody tr:last-child td{ border-bottom: none; }
 .bareme-switch .btn-segment.active[data-type="depot"]{ color: var(--mm-success); }
 .bareme-switch .btn-segment.active[data-type="retrait"]{ color: var(--mm-danger); }
 .bareme-switch .btn-segment.active[data-type="transfert"]{ color: var(--mm-primary-dark); }
+
+@media (max-width: 900px){
+  #mmSidebarClose{ display: block !important; }
+}
+
+.mm-sidebar-toggle .hamburger-bar{
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: #FFCC00;
+  margin: 2px 0;
+  border-radius: 2px;
+}
