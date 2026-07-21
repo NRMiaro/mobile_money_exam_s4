@@ -199,4 +199,20 @@ class BaremeService
         $db->transComplete();
         return $db->transStatus();
     }
+
+    /**
+     * Calcule les frais pour un montant et un type de transaction donné
+     */
+    public function calculerFrais(float $montant, int $idTypeTransaction): float
+    {
+        $baremes = $this->getBaremes($idTypeTransaction);
+
+        foreach ($baremes as $bareme) {
+            if ($montant >= $bareme['montant_min'] && $montant <= $bareme['montant_max']) {
+                return (float) $bareme['frais'];
+            }
+        }
+
+        return 0.0;
+    }
 }
