@@ -131,10 +131,11 @@ class ClientController extends BaseController
 
     public function transfertMultiple()
     {
-        return view('client/transfert_multiple', [
+        $data = [
             'baremes'     => $this->baremeService->getBaremesTransfert(),
             'commissions' => (new CommissionModel())->findAll()
-        ]);
+        ];
+        return view('client/transfert_multiple', $data);
     }
 
     public function effectuerTransfertMultiple()

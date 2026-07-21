@@ -21,7 +21,7 @@ class OperateurController extends BaseController
     {
         $this->baremeService = new BaremeService();
         $this->modelTypeTransaction = new TypeTransactionModel();
-        $this->transactionService= new TransactionService();
+        $this->transactionService = new TransactionService();
     }
 
     public function dashboard()
@@ -34,7 +34,7 @@ class OperateurController extends BaseController
             'totalGains' => $transactionService->getTotalGains(),
             'totalPrefixes' => $prefixeService->getTotalPrefixes(),
             'nombreClientsActifs' => $utilisateurService->countClientsActifs(),
-            'gainOperateur'=>$situationGain['gain_operateur'],
+            'gainOperateur' => $situationGain['gain_operateur'],
             'gainAutresOperateurs' => $situationGain['gain_autres_operateurs']
         ];
 
@@ -49,7 +49,7 @@ class OperateurController extends BaseController
             'comptes' => $utilisateurService->getComptesAbonnes(),
             'pageTitle' => "Comptes Abonnés"
         ]);
-    }   
+    }
 
 
     // ---------- OPERATEUR ----------
@@ -146,15 +146,15 @@ class OperateurController extends BaseController
     }
 
     public function situationCommission()
-{
-    $commissions = $this->transactionService->getSituationCommissionParOperateur();
+    {
+        $commissions = $this->transactionService->getSituationCommissionParOperateur();
 
-    $data = [
-        'pageTitle'=>'Situation des commissions',
-        'commissions' => $commissions
-    ];
+        $data = [
+            'pageTitle' => 'Situation des commissions',
+            'commissions' => $commissions
+        ];
 
 
-    return view('operateur/situation_commission', $data);
-}
+        return view('operateur/situation_commission', $data);
+    }
 }

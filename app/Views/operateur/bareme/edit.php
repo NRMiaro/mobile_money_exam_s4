@@ -2,7 +2,6 @@
 
 <?= $this->section('content') ?>
 
-
 <?php
 function formatMontant($value): string
 {
@@ -11,75 +10,62 @@ function formatMontant($value): string
         : 'Illimité';
 }
 
-
 $avant = $contexte['avant'] ?? null;
 $courant = $contexte['courant'];
 $apres = $contexte['apres'] ?? null;
-
 ?>
-
 
 <div class="d-flex justify-content-between align-items-center mb-4">
     <div>
-        <h2>Modifier un barème</h2>
-        <p class="text-muted">
+        <h2 class="fw-bold mb-1">Modifier un barème</h2>
+        <p class="text-muted mb-0">
             Les tranches voisines seront ajustées automatiquement.
         </p>
     </div>
 
-    <a href="<?= base_url('operateur/baremes') ?>"
-        class="btn btn-outline-secondary">
-        Retour
+    <a href="<?= base_url('operateur/baremes') ?>" class="btn btn-outline-dark fw-semibold">
+        <i class="bi bi-arrow-left me-1"></i> Retour
     </a>
 </div>
-
-
 
 <form method="post" action="<?= base_url('operateur/baremes/update/' . $courant['id']) ?>">
     <div class="row justify-content-center">
         <div class="col-lg-8">
+
             <?php if ($avant): ?>
-                <div class="card mb-3">
-                    <div class="card-header bg-light">
+                <div class="card mb-3 border-0 shadow-sm">
+                    <div class="card-header bg-light fw-bold text-muted small text-uppercase">
                         Barème précédent
                     </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
-                                <small>Montant min</small>
-                                <div>
-                                    <?= formatMontant($avant['montant_min']) ?>
-                                </div>
+                                <small class="text-muted d-block">Montant min</small>
+                                <span class="fw-semibold"><?= formatMontant($avant['montant_min']) ?></span>
                             </div>
                             <div class="col">
-                                <small>Montant max</small>
-                                <div id="previewAvantMax">
-                                    <?= formatMontant($avant['montant_max']) ?>
-                                </div>
+                                <small class="text-muted d-block">Montant max</small>
+                                <span class="fw-semibold" id="previewAvantMax"><?= formatMontant($avant['montant_max']) ?></span>
                             </div>
                             <div class="col">
-                                <small>Frais</small>
-                                <div>
-                                    <?= formatMontant($avant['frais']) ?>
-                                </div>
+                                <small class="text-muted d-block">Frais</small>
+                                <span class="fw-semibold"><?= formatMontant($avant['frais']) ?></span>
                             </div>
                         </div>
                     </div>
                 </div>
-
             <?php endif; ?>
 
-            <!-- Ligne à modifier -->
-            <div class="card mb-3 border-primary">
-                <div class="card-header bg-primary text-white">
-                    Barème à modifier
+            <!-- Ligne à modifier : Styled MVola -->
+            <div class="bareme-edit-card mb-3">
+                <div class="card-header d-flex align-items-center justify-content-between">
+                    <span>Barème à modifier</span>
+                    <span class="badge bg-warning text-dark">En cours d'édition</span>
                 </div>
-                <div class="card-body">
-                    <div class="row">
+                <div class="card-body p-4">
+                    <div class="row g-3">
                         <div class="col-md-4">
-                            <label class="form-label">
-                                Montant minimum
-                            </label>
+                            <label class="form-label">Montant minimum</label>
                             <input
                                 type="number"
                                 class="form-control"
@@ -89,9 +75,7 @@ $apres = $contexte['apres'] ?? null;
                         </div>
 
                         <div class="col-md-4">
-                            <label class="form-label">
-                                Montant maximum
-                            </label>
+                            <label class="form-label">Montant maximum</label>
                             <input
                                 type="number"
                                 class="form-control"
@@ -99,131 +83,81 @@ $apres = $contexte['apres'] ?? null;
                                 name="montant_max"
                                 value="<?= $courant['montant_max'] ?>">
                         </div>
+
                         <div class="col-md-4">
-
-                            <label class="form-label">
-                                Frais
-                            </label>
-
-
+                            <label class="form-label">Frais</label>
                             <input
                                 type="number"
                                 class="form-control"
                                 name="frais"
                                 value="<?= $courant['frais'] ?>">
-
-
                         </div>
                     </div>
                 </div>
             </div>
 
             <?php if (session()->getFlashdata('error')): ?>
-                <div class="alert alert-danger py-2">
+                <div class="alert alert-danger py-2 fw-semibold">
                     <?= session()->getFlashdata('error') ?>
                 </div>
             <?php endif; ?>
 
             <?php if ($apres): ?>
-                <div class="card mb-3">
-                    <div class="card-header bg-light">
+                <div class="card mb-3 border-0 shadow-sm">
+                    <div class="card-header bg-light fw-bold text-muted small text-uppercase">
                         Barème suivant
                     </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
-                                <small>
-                                    Montant min
-                                </small>
-                                <div id="previewApresMin">
-                                    <?= formatMontant($apres['montant_min']) ?>
-                                </div>
-                            </div>
-
-                            <div class="col">
-                                <small>
-                                    Montant max
-                                </small>
-                                <div>
-                                    <?= formatMontant($apres['montant_max']) ?>
-                                </div>
+                                <small class="text-muted d-block">Montant min</small>
+                                <span class="fw-semibold" id="previewApresMin"><?= formatMontant($apres['montant_min']) ?></span>
                             </div>
                             <div class="col">
-                                <small>
-                                    Frais
-                                </small>
-                                <div>
-                                    <?= formatMontant($apres['frais']) ?>
-                                </div>
+                                <small class="text-muted d-block">Montant max</small>
+                                <span class="fw-semibold"><?= formatMontant($apres['montant_max']) ?></span>
+                            </div>
+                            <div class="col">
+                                <small class="text-muted d-block">Frais</small>
+                                <span class="fw-semibold"><?= formatMontant($apres['frais']) ?></span>
                             </div>
                         </div>
                     </div>
                 </div>
             <?php endif; ?>
 
-            <button class="btn btn-primary">
+            <button class="btn btn-mm-primary w-100 mt-2">
                 Enregistrer les modifications
             </button>
         </div>
     </div>
-
-
 </form>
+
 <script>
     const inputMin = document.getElementById('montant_min');
     const inputMax = document.getElementById('montant_max');
-
-
-    const previewAvantMax =
-        document.getElementById('previewAvantMax');
-
-
-    const previewApresMin =
-        document.getElementById('previewApresMin');
-
-
+    const previewAvantMax = document.getElementById('previewAvantMax');
+    const previewApresMin = document.getElementById('previewApresMin');
 
     function formatAr(value) {
-        return Number(value)
-            .toLocaleString('fr-FR') + ' Ar';
+        return Number(value).toLocaleString('fr-FR') + ' Ar';
     }
 
-
-
     function updatePreview() {
-
         let min = parseInt(inputMin.value);
         let max = parseInt(inputMax.value);
 
-
-
-        if (previewAvantMax) {
-            previewAvantMax.innerHTML =
-                formatAr(min - 1);
+        if (previewAvantMax && !isNaN(min)) {
+            previewAvantMax.innerHTML = formatAr(min - 1);
         }
 
-
-
-        if (previewApresMin) {
-            previewApresMin.innerHTML =
-                formatAr(max + 1);
+        if (previewApresMin && !isNaN(max)) {
+            previewApresMin.innerHTML = formatAr(max + 1);
         }
-
     }
 
-
-
-    inputMin.addEventListener(
-        'input',
-        updatePreview
-    );
-
-
-    inputMax.addEventListener(
-        'input',
-        updatePreview
-    );
+    inputMin.addEventListener('input', updatePreview);
+    inputMax.addEventListener('input', updatePreview);
 </script>
-
 
 <?= $this->endSection() ?>
