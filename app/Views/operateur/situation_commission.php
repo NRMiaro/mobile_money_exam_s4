@@ -25,22 +25,26 @@ $pageDesc   = 'Commission générée par opérateur partenaire';
     <div class="card-head">
         <h2>Détail par opérateur</h2>
     </div>
-    <table class="table mm-table">
-        <thead>
-            <tr>
-                <th>Opérateur</th>
-                <th>Total commissions dues</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($commissions as $c): ?>
+    <?php if (count($commissions) == 0): ?>
+        <div class="p-4 text-center text-muted small">Aucune commission due pour les operateurs.</div>
+    <?php else: ?>
+        <table class="table mm-table">
+            <thead>
                 <tr>
-                    <td><?= esc($c['operateur']) ?></td>
-                    <td><?= number_format($c['total_commission'], 0, ',', ' ') ?> Ar</td>
+                    <th>Opérateur</th>
+                    <th>Total commissions dues</th>
                 </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                <?php foreach ($commissions as $c): ?>
+                    <tr>
+                        <td><?= esc($c['operateur']) ?></td>
+                        <td><?= number_format($c['total_commission'], 0, ',', ' ') ?> Ar</td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    <?php endif; ?>
 </div>
 
 <?= $this->endSection() ?>
