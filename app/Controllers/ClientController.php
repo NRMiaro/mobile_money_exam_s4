@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\CommissionModel;
 use App\Models\PrefixeModel;
+use App\Models\PromotionModel;
 use App\Services\BaremeService;
 use App\Services\TransactionService;
 use App\Services\UtilisateurService;
@@ -94,13 +95,17 @@ class ClientController extends BaseController
     {
         $modelPrefixe = new PrefixeModel();
         $prefixes = $modelPrefixe->select('prefixe, id_operateur')->get()->getResultArray();
+        $promotionModel = new PromotionModel();
+        $promoActive = $promotionModel->getPromoActive();
+        
 
         return view('client/transfert', [
             'baremes'        => $this->baremeService->getBaremesTransfert(),
             'baremesRetrait' => $this->baremeService->getBaremesRetrait(),
             'prefixes'       => $prefixes,
             'commissions'    => (new CommissionModel())->findAll(),
-            'idOperateur'    => 1
+            'idOperateur'    => 1,
+            'promoActive'    => $promoActive,
         ]);
     }
 

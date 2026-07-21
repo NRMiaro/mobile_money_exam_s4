@@ -4,6 +4,7 @@ use App\Models\TransactionModel;
 use App\Models\TypeTransactionModel;
 use App\Models\UtilisateurModel;
 use App\Models\CommissionModel;
+use App\Models\PromotionModel;
 use Config\Database;
 use Exception;
 
@@ -159,6 +160,16 @@ class TransactionService
         }
 
         $fraisTransfert = $this->baremeService->calculerFrais($montant, TypeTransactionModel::TRANSFERT_ID);
+
+        if ($operateurSource == $operateurDestinataire) {
+            $promotionModel = new PromotionModel();
+            $promoActive = $promotionModel->getPromoActive();
+            
+                if ($promoActive) {
+                    $reduction = $fraisTransfert * ($promoActive['pourcentage']/100);
+                    $fraisTransfert = $fraisTransfert - $reduction;
+                }
+        }
 
         $fraisRetrait = 0;
         if ($payerRetrait && $operateurSource == $operateurDestinataire) {

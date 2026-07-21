@@ -1,4 +1,4 @@
-    -- Active: 1784550825520@@127.0.0.1@3306
+-- Active: 1784552473363@@127.0.0.1@3306
     PRAGMA foreign_keys = OFF;
 
     DROP TABLE IF EXISTS transactions;
@@ -150,4 +150,16 @@
     VALUES
         (2, 1.5),   -- Orange
         (3, 2.0);
+
+    CREATE TABLE promotion(
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        pourcentage REAL NOT NULL CHECK (pourcentage >= 0 AND pourcentage <= 100),
+        is_actif INTEGER NOT NULL DEFAULT 1
+    );
+
+    INSERT INTO promotion (id,pourcentage)
+    VALUES
+    (1,10);
+
+
 
