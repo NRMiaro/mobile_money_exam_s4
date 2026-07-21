@@ -118,10 +118,10 @@ Atao hoe Yas le tompon'ny Systeme D'Information, ohatra eto
 
 ### Transfert — frais et commission (Miaro)
 
-- [ ] Client qui veut faire transfert : proposer d'envoyer le frais de retrait du destinataire
+- [x] Client qui veut faire transfert : proposer d'envoyer le frais de retrait du destinataire
   - [x] Obtenir liste baremesRetraits dans la page transfert
   - [x] Dynamique onChange montant (afficher frais déjà fait) : checkbox "Inclure des frais de retraits XXXX Ar"
   - [x] Dynamique si Yas2Autre : afficher commission prélevée
-  - [ ] Dynamique : ajouter commission si Yas2Autre
+  - [x] Dynamique : ajouter commission si Yas2Autre
 
 ---
