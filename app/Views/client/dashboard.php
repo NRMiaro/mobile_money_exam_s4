@@ -11,7 +11,8 @@ $labels = ['depot' => 'Dépôt', 'retrait' => 'Retrait', 'transfert' => 'Transfe
         <div class="balance-ticket h-100">
             <div class="bt-chip"></div>
             <div class="bt-label">Solde disponible</div>
-            <div class="bt-amount"><?= number_format($utilisateur['solde'], 0, ',', ' ') ?> Ar</div>
+            <div class="bt-amount">Principal: <?= number_format($utilisateur['solde'], 0, ',', ' ') ?> Ar</div>
+            <div class="bt-amount">Epargne: <?= number_format($utilisateur['solde_epargne'], 0, ',', ' ') ?> Ar</div>
             <div class="bt-numero"><?= esc($utilisateur['numero']) ?></div>
         </div>
     </div>

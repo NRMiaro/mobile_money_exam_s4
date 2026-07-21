@@ -39,7 +39,16 @@
                        maxlength="4" inputmode="numeric" pattern="[0-9]{4}" placeholder="••••" required>
             </div>
 
-            <button type="submit" class="btn btn-mm-primary w-100">Se connecter</button>
+            <div>
+
+                <h4>Donnees de test:</h4>
+                <small>Operateur: 0340000000 - 1234</small>
+                <br>
+                <small>Utilisateur 01: 0341234567 - 1111</small>
+                <br>    
+                <small>Utilisateur 02: 0387654321 - 2222</small>
+                <button type="submit" class="btn btn-mm-primary w-100">Se connecter</button>
+            </div>
         </form>
 
     </div>

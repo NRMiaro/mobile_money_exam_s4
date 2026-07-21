@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\ChoixEpargneModel;
 use App\Models\CommissionModel;
 use App\Models\PrefixeModel;
 use App\Models\PromotionModel;
@@ -85,9 +86,9 @@ class ClientController extends BaseController
 
         try {
             $this->transactionService->effectuerRetrait($idUtilisateur, $montant);
-            return redirect()->to('/client/solde')->with('success', 'Retrait effectué avec succès.');
+            // return redirect()->to('/client/solde')->with('success', 'Retrait effectué avec succès.');
         } catch (Exception $e) {
-            return redirect()->back()->with('error', $e->getMessage());
+            // return redirect()->back()->with('error', $e->getMessage());
         }
     }
 
@@ -155,5 +156,27 @@ class ClientController extends BaseController
         } catch (Exception $e) {
             return redirect()->back()->with('error', $e->getMessage());
         }
+    }
+
+    public function choixEpargne(){
+        $data = [
+            'pourcentageEpargne' => (new ChoixEpargneModel())->getByIdClient(session()->get('idUtilisateur'))['pourcentage']
+        ];
+        return view('client/choix-epargne', $data);
+    }
+
+    public function effectuerChoixEpargne(){
+        $pourcentage = $this->request->getPost('pourcentage');
+        $idUtilisateur = session()->get('idUtilisateur');
+        $model = new ChoixEpargneModel();
+        $choixActuel = $model->getByIdClient($idUtilisateur);
+        (new ChoixEpargneModel())->update(
+            $choixActuel['id'],
+            [
+                'pourcentage' => $pourcentage
+            ]
+        );
+
+        return redirect()->to('client')->with('success', "Pourcentage change avec succes");
     }
 }

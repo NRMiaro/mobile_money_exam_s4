@@ -20,6 +20,7 @@ class UtilisateurModel extends Model
         'date_naissance',
         'code_secret',
         'solde',
+        'solde_epargne',
         'is_actif',
         'is_admin'
     ];
@@ -27,6 +28,7 @@ class UtilisateurModel extends Model
     protected array $casts = [
         'id'        => 'int',
         'solde'     => 'float',
+        'solde_epargne'     => 'float',
         'is_actif'  => 'boolean',
         'is_admin'  => 'boolean',
     ];

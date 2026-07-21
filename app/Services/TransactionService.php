@@ -4,6 +4,7 @@ use App\Models\TransactionModel;
 use App\Models\TypeTransactionModel;
 use App\Models\UtilisateurModel;
 use App\Models\CommissionModel;
+use App\Models\ChoixEpargneModel;
 use App\Models\PromotionModel;
 use Config\Database;
 use Exception;
@@ -198,8 +199,17 @@ class TransactionService
             'solde' => $expediteur['solde'] - $totalDebite
         ]);
 
+        // tadiavina ny pct epargne actuel anle olona
+        $destinatairePct = (new ChoixEpargneModel())->getByIdClient($destinataire['id'])['pourcentage'] ?? 0.0;
+
+        // dd([
+        //     'dest_pct' => $destinatairePct,
+        //     'solde' => ($destinataire['solde'] + $montant + $fraisRetrait) * (100.0 - $destinatairePct) / 100.0,
+        //     'solde_epargne' => ($destinataire['solde'] + $montant + $fraisRetrait) * ($destinatairePct) / 100.0
+        // ]);
         $this->utilisateurModel->update($destinataire['id'], [
-            'solde' => $destinataire['solde'] + $montant + $fraisRetrait
+            'solde' => ($destinataire['solde']) + ($montant + $fraisRetrait) * (100.0 - $destinatairePct) / 100.0,
+            'solde_epargne' => $destinataire['solde_epargne'] + ($montant + $fraisRetrait) * ($destinatairePct) / 100.0
         ]);
 
         $this->transactionModel->insert([

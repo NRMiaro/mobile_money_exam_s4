@@ -33,6 +33,9 @@ $routes->group('/client', ['filter' => ['auth']], function ($routes) {
     // TRANSFERT MULTIPLE
     $routes->get('transfert-multiple', 'ClientController::transfertMultiple');
     $routes->post('transfert-multiple', 'ClientController::effectuerTransfertMultiple');
+
+    $routes->get('choix-epargne', 'ClientController::choixEpargne');
+    $routes->post('choix-epargne', 'ClientController::effectuerChoixEpargne');
 });
 
 // Opérateur

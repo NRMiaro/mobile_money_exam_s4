@@ -70,6 +70,11 @@ $numero = session()->get('numero') ?? '';
             <span class="nav-ico">&#9776;</span> Transfert multiple
         </a>
 
+        <a href="<?= base_url('client/choix-epargne') ?>"
+            class="nav-link <?= $activePage == 'choix-epargne' ? 'active' : '' ?>">
+            <span class="nav-ico">&#9776;</span> Modifier son epargne
+        </a>
+
     </nav>
 
     <div class="sidebar-logout">
