@@ -69,8 +69,8 @@ function renderBaremeRows(array $baremes): void
     <div class="tab-pane fade show active" id="pane-depot" role="tabpanel">
         <div class="mm-table-card">
             <div class="card-head">
-                <h2><span class="badge-op depot me-2">&#8595;</span> Barème — Dépôt</h2>
-                <span class="page-desc"><?= count($baremesDepot) ?> tranche(s)</span>
+                <h2><span class="badge-op depot me-2">&#8595;</span> Barèmes — Dépôt</h2>
+                <span class="page-desc"><?= count($baremesDepot) ?> tranches</span>
             </div>
             <?php renderBaremeRows($baremesDepot) ?>
         </div>
@@ -79,8 +79,8 @@ function renderBaremeRows(array $baremes): void
     <div class="tab-pane fade" id="pane-retrait" role="tabpanel">
         <div class="mm-table-card">
             <div class="card-head">
-                <h2><span class="badge-op retrait me-2">&#8593;</span> Barème — Retrait</h2>
-                <span class="page-desc"><?= count($baremesRetrait) ?> tranche(s)</span>
+                <h2><span class="badge-op retrait me-2">&#8593;</span> Barèmes — Retrait</h2>
+                <span class="page-desc"><?= count($baremesRetrait) ?> tranches</span>
             </div>
             <?php renderBaremeRows($baremesRetrait) ?>
         </div>
@@ -89,8 +89,8 @@ function renderBaremeRows(array $baremes): void
     <div class="tab-pane fade" id="pane-transfert" role="tabpanel">
         <div class="mm-table-card">
             <div class="card-head">
-                <h2><span class="badge-op transfert me-2">&#8644;</span> Barème — Transfert</h2>
-                <span class="page-desc"><?= count($baremesTransfert) ?> tranche(s)</span>
+                <h2><span class="badge-op transfert me-2">&#8644;</span> Barèmes — Transfert</h2>
+                <span class="page-desc"><?= count($baremesTransfert) ?> tranches</span>
             </div>
             <?php renderBaremeRows($baremesTransfert) ?>
         </div>

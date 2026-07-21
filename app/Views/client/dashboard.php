@@ -51,7 +51,7 @@ $labels = ['depot' => 'Dépôt', 'retrait' => 'Retrait', 'transfert' => 'Transfe
 
 <div class="mm-table-card">
     <div class="card-head">
-        <h2>Dérnières transactions</h2>
+        <h2>Dernières transactions</h2>
     </div>
 
     <?php if (empty($transactions)): ?>

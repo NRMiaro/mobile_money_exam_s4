@@ -11,7 +11,7 @@ $routes->get('logout', 'AuthController::logout');
 // Client
 $routes->group('/client', ['filter' => ['auth']], function ($routes) {
     $routes->get('', 'ClientController::dashboard');
-    $routes->get('solde', 'ClientController::solde');
+    $routes->get('solde', 'ClientController::dashboard');
     $routes->get('dashboard', 'ClientController::dashboard');
 
     // DEPOT

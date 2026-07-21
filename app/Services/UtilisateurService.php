@@ -26,4 +26,9 @@ class UtilisateurService
             ->orderBy('solde', 'DESC')
             ->findAll();
     }
+
+    public function getById($id){
+        return $this->model
+            ->find($id);
+    }
 }
