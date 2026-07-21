@@ -29,7 +29,7 @@ $pageDesc   = 'Commission générée par opérateur partenaire';
         <thead>
             <tr>
                 <th>Opérateur</th>
-                <th>Total commission</th>
+                <th>Total commissions dues</th>
             </tr>
         </thead>
         <tbody>
